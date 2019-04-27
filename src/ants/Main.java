@@ -20,26 +20,17 @@ public class Main {
 		
 		graph.connect(4, 5, 1);	
 		
-		Ant ant=new Ant(graph.getNode(0),5,1,1,1);
+		Ant ant=new Ant(graph.getNode(1),5,1,1,1);
 		
-		ant.moveAnt();
-		System.out.println(ant.toString());
-		ant.moveAnt();
-		System.out.println(ant.toString());
-		ant.moveAnt();
-		System.out.println(ant.toString());
-		ant.moveAnt();
-		System.out.println(ant.toString());
-		ant.moveAnt();
-		System.out.println(ant.toString());
-		ant.moveAnt();
-		System.out.println(ant.toString());
-		ant.moveAnt();
-		System.out.println(ant.toString());
-		ant.moveAnt();
-		System.out.println(ant.toString());
-		ant.moveAnt();
-		System.out.println(ant.toString());
+		for(int k=0 ; k<20 ; k++)
+		{
+			
+			ant.moveAnt();
+			System.out.println(Integer.toString(k));
+			System.out.println(ant.toString());			
+		}
+		
+		System.out.println(graph.toString());
 		
 		int a = 1;
 		a=2;

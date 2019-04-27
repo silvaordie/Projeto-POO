@@ -77,14 +77,14 @@ public class Ant {
 		{
 			this.shortest_cycle = (LinkedList<Link>)this.cycle.clone();
 			this.min_cycle = sum;
-			
-			float increment = this.gamma * (sum) ;
-			
-			for (k=0; k<this.cycle.size() ;k++)
-			{
-				link = this.cycle.get(k);
-				link.updatePh(increment);
-			}
+		}
+		float increment = this.gamma * (sum) ;
+		Node no = this.start;
+		for (k=0; k<this.cycle.size() ;k++)
+		{
+			link = this.cycle.get(k);
+			link.updatePh(increment, no);
+			no = link.getNode();
 		}
 	}
 	
@@ -150,11 +150,13 @@ public class Ant {
 			if(empty)
 			{
 				a = temp.getNode();
-				if(a.equals(this.start) && this.cycle.size()==this.n_nodes-1)
+				if(a.equals(this.start))
 				{
-					
 					this.cycle.add(temp);
-					this.checkSize();
+					
+					if(this.cycle.size()==this.n_nodes)
+						this.checkSize();
+					
 					this.cycle.clear();
 					
 					return;
@@ -162,30 +164,25 @@ public class Ant {
 
 				k=0;
 				temp = this.cycle.get(k);
-				while(!a.equals(temp.getNode()) && k<this.cycle.size())
+				while(!a.equals(temp.getNode()) )
 				{
 					temp=this.cycle.get(k);
 					k++;
 				}
 				
-				if(k<this.cycle.size())
+				v=this.cycle.size()-1;
+				while(v!=k)
 				{
-					v=this.cycle.size()-1;
-					while(v!=k)
-					{
-						this.cycle.remove(v);
-						v--;
-					}
+					this.cycle.remove(v);
+					v--;
 				}
-				else
-				{
-					this.cycle.clear();
-					return;
-				}
+				this.cycle.remove(v);			
 			}
 			else
 				this.cycle.add(temp);				
 		}
+		
+		return;
 	}
 
 	@Override
@@ -199,7 +196,7 @@ public class Ant {
 			link=this.cycle.get(k);
 			no=link.getNode();
 			
-			str=str + no.getId() + ", ";
+			str=str + Integer.toString(no.getId()) + ", ";
 		}
 		
 		return str + "\n";

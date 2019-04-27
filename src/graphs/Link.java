@@ -12,7 +12,7 @@ public class Link {
 		this.node = _n;
 	}	
 	
-	public void updatePh(float _value)
+	public void updatePh(float _value, Node no)
 	{
 		this.pheromone += _value;
 		
@@ -23,14 +23,13 @@ public class Link {
 		{	
 			temp = adj.get(k);
 			
-			if(temp.node.equals(this.node))
+			if(temp.node.equals(no))
 			{ 
 				temp.pheromone += _value;
 				
 				return;
 			}
 		}
-		
 	}
 
 	public Node getNode()

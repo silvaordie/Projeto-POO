@@ -29,7 +29,7 @@ public class Graph{
 	
 	public Node getNode(int _id)
 	{
-		return nodes[_id];
+		return nodes[_id-1];
 	}
 
 	@Override
