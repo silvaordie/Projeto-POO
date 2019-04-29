@@ -31,7 +31,12 @@ public class Graph{
 	{
 		return nodes[_id-1];
 	}
-
+	
+	public int getSize()
+	{
+		return nodes.length;
+	}
+	
 	@Override
 	public String toString() {
 		String str = new String ("Graph:\n");

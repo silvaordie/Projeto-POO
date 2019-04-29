@@ -13,7 +13,7 @@ public class Ant {
 	float beta;
 	float gamma;
 	
-	Ant(Node _ini, int _n_nodes, float _alpha, float _beta, float _gamma)
+	public Ant(Node _ini, int _n_nodes, float _alpha, float _beta, float _gamma)
 	{
 		this.n_nodes = _n_nodes;
 		this.start= _ini;
