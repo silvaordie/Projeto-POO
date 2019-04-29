@@ -14,7 +14,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import graphs.*;
 import ants.*;
-
+import events.*;
 public class Simulation extends DefaultHandler{
 
 	private static final String GRAPH = "graph";
@@ -124,19 +124,16 @@ public class Simulation extends DefaultHandler{
 		} catch(IOException e){
 			System.out.println(e);
 		}
-
-		for(int k=0; k< ants.length ; k++)
-			ants[k]= new Ant(graph.getNode(nestNode), graph.getSize(), alpha, beta, plevel);
 		
-		for(int k=0 ; k<20 ; k++)
+		PEC pec = new PEC();
+		
+		for(int k=0; k< ants.length ; k++)
 		{
-			
-			ants[2].moveAnt();
-			System.out.println(Integer.toString(k));
-			System.out.println(ants[2].toString());			
+			ants[k]= new Ant(graph.getNode(nestNode), graph.getSize(), alpha, beta, plevel);
+			pec.addEvPEC(new EvAntMove( Event.expRandom(delta) , ants[k]) );
 		}
 		
-		System.out.println(graph.toString());
+		
 		
 	}									 
 }

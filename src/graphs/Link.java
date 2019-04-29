@@ -41,9 +41,28 @@ public class Link {
 		return this.node;
 	}
 	
-	public void evaporatePh(float _value)
+	public void evaporatePh(float _value, Node no)
 	{
 		this.pheromone -= _value;
+		if(this.pheromone<0)
+			this.pheromone = 0;
+		
+		LinkedList<Link> adj = node.getAdj();
+		Link temp;
+		
+		for(int k=0; k<adj.size(); k++)
+		{	
+			temp = adj.get(k);
+			
+			if(temp.node.equals(no))
+			{ 
+				temp.pheromone -= _value;
+				if(temp.pheromone < 0)
+					temp.pheromone = 0;
+				
+				return;
+			}
+		}
 	}
 	
 	public float getPh()
