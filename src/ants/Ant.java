@@ -66,6 +66,7 @@ public class Ant {
 		float sum = 0;
 		int k;
 		Link link;
+		boolean ret = false;
 		
 		for(k=0; k<this.cycle.size(); k++)
 		{
@@ -88,11 +89,13 @@ public class Ant {
 		}
 	}
 	
-	public void moveAnt()
+	public boolean moveAnt()
 	{
 		Link temp;
 		Node a;
 		Node b;
+		
+		boolean ret = false;
 		
 		if(this.cycle.size() > 0)
 		{
@@ -137,7 +140,7 @@ public class Ant {
 			{
 				temp=val.get(0);
 				cycle.add(temp);	
-				return;
+				return ret;
 			}
 			
 			empty = true;
@@ -155,11 +158,13 @@ public class Ant {
 					this.cycle.add(temp);
 					
 					if(this.cycle.size()==this.n_nodes)
+					{
 						this.checkSize();
-					
+						ret = true;
+					}
 					this.cycle.clear();
 					
-					return;
+					return ret;
 				}
 
 				k=0;
@@ -182,23 +187,33 @@ public class Ant {
 				this.cycle.add(temp);				
 		}
 		
-		return;
+		return ret;
 	}
-
+	
+	public LinkedList<Link> getCycle()
+	{
+		return this.shortest_cycle;
+	}
+	
+	public float getWeight()
+	{
+		return this.min_cycle;
+	}
+	
 	@Override
 	public String toString() {
-		String str = new String("Cycle : " + this.start.getId() + ", ");
+		String str = new String("{" + this.start.getId());
 		Link link;
 		Node no;
 		
-		for(int k=0; k<cycle.size();k++)
+		for(int k=0; k<this.shortest_cycle.size()-1;k++)
 		{
-			link=this.cycle.get(k);
+			link=this.shortest_cycle.get(k);
 			no=link.getNode();
 			
-			str=str + Integer.toString(no.getId()) + ", ";
+			str=str + "," + Integer.toString(no.getId()) ;
 		}
 		
-		return str + "\n";
+		return str + "}";
 	}
 }

@@ -4,7 +4,8 @@ import ants.*;
 
 public class EvAntMove extends Event{
 	
-	Ant ant;
+	private Ant ant;
+	private boolean cycle = false;
 	
 	public EvAntMove(float _time, Ant _ant)
 	{
@@ -14,6 +15,16 @@ public class EvAntMove extends Event{
 	
 	public void simulate()
 	{
-		this.ant.moveAnt();
+		cycle = this.ant.moveAnt();
+	}
+	
+	public boolean foundCycle()
+	{
+		return cycle;
+	}
+	
+	public Ant getAnt()
+	{
+		return this.ant;
 	}
 }
