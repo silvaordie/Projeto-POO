@@ -4,18 +4,19 @@ import graphs.*;
 
 public class EvPhEvaporation extends Event{
 	
-	Graph graph;
+	Link link;
+	float ro;
 	
-	EvPhEvaporation(float _time, Graph _graph)
+	EvPhEvaporation(float _time, Link _link, float _ro)
 	{
 		super(_time);
 		
-		this.graph = _graph;
+		this.ro = _ro;
+		this.link = _link;
 	}
 
 	public void simulate()
 	{
-		
+		link.evaporatePh(this.ro);
 	}
-	
 }

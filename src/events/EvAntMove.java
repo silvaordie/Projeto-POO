@@ -14,6 +14,6 @@ public class EvAntMove extends Event{
 	
 	public void simulate()
 	{
-		
+		this.ant.moveAnt();
 	}
 }
