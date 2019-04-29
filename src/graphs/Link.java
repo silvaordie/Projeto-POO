@@ -15,6 +15,8 @@ public class Link {
 	public void updatePh(float _value, Node no)
 	{
 		this.pheromone += _value;
+		if(this.pheromone<0)
+			this.pheromone = 0;
 		
 		LinkedList<Link> adj = node.getAdj();
 		Link temp;
@@ -26,6 +28,8 @@ public class Link {
 			if(temp.node.equals(no))
 			{ 
 				temp.pheromone += _value;
+				if(temp.pheromone < 0)
+					temp.pheromone = 0;
 				
 				return;
 			}
