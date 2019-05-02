@@ -1,26 +1,45 @@
 package graphs;
 import java.util.*;
 
+/**
+ * Represents a bidirectional weighted graph's nodes, which are represented by a numerical value
+ * @author José
+ *
+ */
 public class Node{
-	
+		
 		private int  id;
 		LinkedList<Link> adj = new LinkedList<Link>();
 		
+		/**
+		 * Default constructor
+		 * @param _id Node's numerical indicator 
+		 */
 		Node(int _id)
 		{
 			this.id = _id;
 		}
-		
+		/**
+		 * Creates a link Link connecting the Node(start) to another (end Node)
+		 * @param _n Connection's end Node
+		 * @param _w Weight of the connection
+		 */
 		public void newAdj(Node _n, float _w)
 		{
 			adj.add( new Link( _n , _w ) );
 		}
-		
+		/**
+		 * Returns all the Node's Links
+		 * @return LinkedList of Links connections between the node and connected ones
+		 */
 		public LinkedList<Link> getAdj()
 		{
 			return this.adj;
 		}
-		
+		/**
+		 * Returns the Node's numerical indicator
+		 * @return Node's numerical indicator
+		 */
 		public int getId()
 		{
 			return this.id;

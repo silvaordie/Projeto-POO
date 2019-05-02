@@ -2,26 +2,48 @@ package ants;
 import java.util.*;
 
 import graphs.*;
+
+/**
+ * Represents a single Ant in a bidirectional weighted Graph with pheromone levels in it's Links 
+ * @author José
+ *
+ */
 public class Ant {
 	
 	LinkedList<Link> cycle =  new LinkedList<Link>();
 	LinkedList<Link> shortest_cycle = new LinkedList<Link>(); 
-	private float min_cycle = 9999999;
+	private float min_cycle = 1999999999;
 	private Node start;
 	private int n_nodes;
+	private float graph_weight;
 	float alpha;
 	float beta;
 	float gamma;
 	
-	public Ant(Node _ini, int _n_nodes, float _alpha, float _beta, float _gamma)
+	/**
+	 * Default constructor, sets the Ant's nest node, some simulation parameters, and some graph proprietes
+	 * @param _ini Ant's nest Node
+	 * @param _n_nodes Number of Node sin the Graph
+	 * @param _alpha Parameter concerning the ant move event
+	 * @param _beta Parameter concerning the ant move event
+	 * @param _gamma Parameter concerning the ant move event
+	 * @param _graph_weight Graph's total weight
+	 */
+	public Ant(Node _ini, int _n_nodes, float _alpha, float _beta, float _gamma, float _graph_weight)
 	{
 		this.n_nodes = _n_nodes;
 		this.start= _ini;
 		this.alpha = _alpha;
 		this.beta = _beta;
 		this.gamma = _gamma;
+		this.graph_weight = _graph_weight;
 	}
 	
+	/**
+	 * Based on the possible Nodes the Ant can move to, returns a random index based on the connecting Links weights and pheromone levels
+	 * @param val List of Links that connect the current Node to the available Nodes
+	 * @return Random index of the input List
+	 */
 	private int getRandomIdx(LinkedList <Link> val)
 	{
 		float[] weights = new float[val.size()];
@@ -61,12 +83,14 @@ public class Ant {
 		return minpos_idx;
 	}
 	
+	/**
+	 * Checks if the current Hamiltonian cycle found is shorter than the one previously found, if so saves the current cycle and weight
+	 */
 	private void checkSize()
 	{
 		float sum = 0;
 		int k;
 		Link link;
-		boolean ret = false;
 		
 		for(k=0; k<this.cycle.size(); k++)
 		{
@@ -79,7 +103,7 @@ public class Ant {
 			this.shortest_cycle = (LinkedList<Link>)this.cycle.clone();
 			this.min_cycle = sum;
 		}
-		float increment = this.gamma * (sum) ;
+		float increment = this.gamma * (this.graph_weight/sum) ;
 		Node no = this.start;
 		for (k=0; k<this.cycle.size() ;k++)
 		{
@@ -89,14 +113,17 @@ public class Ant {
 		}
 	}
 	
-	public boolean moveAnt()
+	/**
+	 * Returns the Link that the Ant should traverse to
+	 * @return
+	 */
+	public Link getMove()
 	{
 		Link temp;
 		Node a;
 		Node b;
 		
-		boolean ret = false;
-		
+		//Cycle's latest node
 		if(this.cycle.size() > 0)
 		{
 			temp = this.cycle.getLast();
@@ -104,17 +131,16 @@ public class Ant {
 		}
 		else
 			a = this.start;
-			
+		
+		//Grabs the latest node's edges
 		LinkedList<Link> adj = a.getAdj();
+		//Valid edges
 		LinkedList<Link> val = new LinkedList<Link>();		
 
 		int v;
 		int k;
+		//Checks every edge and if valid, adds it to the valid edges list
 		boolean found;
-		boolean empty=false;
-		
-
-		
 		for(k=0; k<adj.size(); k++)
 		{
 			temp=adj.get(k);
@@ -134,67 +160,83 @@ public class Ant {
 			if(!found)
 				val.add(adj.get(k));
 		}
+		
 		if(val.size()<2)
 		{
+			//In case of a single valid edge, returns it
 			if(val.size()==1)
 			{
-				temp=val.get(0);
-				cycle.add(temp);	
-				return ret;
+				return val.get(0);	
 			}
-			
-			empty = true;
+			//In case of no valid edge, all available edges are considered valid
 			val=adj;
 		}
-		if(val.size()>1)
-		{
-			int sel = this.getRandomIdx(val);
-			temp=val.get(sel);
-			if(empty)
-			{
-				a = temp.getNode();
-				if(a.equals(this.start))
-				{
-					this.cycle.add(temp);
-					
-					if(this.cycle.size()==this.n_nodes)
-					{
-						this.checkSize();
-						ret = true;
-					}
-					this.cycle.clear();
-					
-					return ret;
-				}
-
-				k=0;
-				temp = this.cycle.get(k);
-				while(!a.equals(temp.getNode()) )
-				{
-					temp=this.cycle.get(k);
-					k++;
-				}
-				
-				v=this.cycle.size()-1;
-				while(v!=k)
-				{
-					this.cycle.remove(v);
-					v--;
-				}
-				this.cycle.remove(v);			
-			}
-			else
-				this.cycle.add(temp);				
-		}
 		
-		return ret;
+		//Returns the most likely edge
+		return val.get(this.getRandomIdx(val));
 	}
 	
+	/**
+	 * Moves the ant to the desired Node through the given Link and checks if by doing so, found an Hamiltonian cycle
+	 * @param link Link the Ant should traverse to
+	 * @return True if an Hamiltonian cycle was found with the ant move
+	 */
+	public boolean moveAnt(Link link)
+	{
+		Node no = link.getNode();
+		boolean remove = false;
+		
+		//If the next node is the nest
+		if(no.equals(this.start))
+		{
+			this.cycle.add(link);
+			//Check if it is a hamiltonian cycle
+			if(this.cycle.size()==this.n_nodes)
+			{
+				this.checkSize();
+				return true;
+			}
+
+			//Clear the cycle
+			this.cycle.clear();			
+		}
+		else
+		{
+			int k;
+			//Check if the ant has visited the node
+			for(k=0; k<this.cycle.size() ; k++)
+			{
+				Link aux = this.cycle.get(k);
+				if(no.equals(aux.getNode()))
+				{
+					remove = true;
+					break;
+				}
+			}
+			//If it has already visited, clear the nodes that it visited afterwards
+			for(int v=this.cycle.size()-1; v<=k && remove; v++)
+				this.cycle.remove(v);
+			//If not, it moves to the node
+			if(!remove)
+				this.cycle.add(link);
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Returns the Ant's shortest cycle found
+	 * @return
+	 */
 	public LinkedList<Link> getCycle()
 	{
 		return this.shortest_cycle;
 	}
 	
+	/**
+	 * Returns the weigh of the shortes cycle found
+	 * @return
+	 */
 	public float getWeight()
 	{
 		return this.min_cycle;

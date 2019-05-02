@@ -2,11 +2,19 @@ package events;
 
 import java.util.*;
 
+/**
+ * Responsible for stochastic event handling
+ * @author José
+ *
+ */
 public class PEC {
-
+	
 	LinkedList<Event> events = new LinkedList<Event>();
 	
-	
+	/**
+	 * Adds a new event do the to event queue, where the first event in queue is the one with a lower time value
+	 * @param _event Event to add to the queue
+	 */
 	public void addEvPEC(Event _event)
 	{
 		if(_event.geTime()<310)
@@ -34,6 +42,10 @@ public class PEC {
 		}		
 	}
 	
+	/**
+	 * Fetches the next event to simulate by removing it from the queue
+	 * @return Next event to simulate
+	 */
 	public Event nextEvPEC()
 	{
 		return this.events.removeFirst();		

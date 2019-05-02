@@ -19,6 +19,11 @@ import events.*;
 
 import java.util.*;
 
+/**
+ * "Main" class, interperts the XML file conatining the simulation parameters and enviornment and simulates.
+ * @author José
+ *
+ */
 public class Simulation extends DefaultHandler{
 
 	private static final String GRAPH = "graph";
@@ -54,44 +59,91 @@ public class Simulation extends DefaultHandler{
 		System.out.println("Parsing completed!");
 	}
 	
+	static float parseTag(String tag, Attributes atts)
+	{	
+		float ret=0;
+		try{
+			ret = Float.parseFloat(atts.getValue(atts.getIndex(tag)));
+		}catch (NumberFormatException | NullPointerException nfe)
+		{
+			System.out.println("Erreor evaluating " + tag +  ", " + nfe);
+			System.exit(1);
+		}
+		if(ret<0)
+		{
+			System.out.println("Value of " + tag + " must be positive");
+			System.exit(1);			
+		}
+		
+		return ret;
+	}
+	static int parseTagInt(String tag, Attributes atts)
+	{	
+		int ret=0;
+		try{
+			ret = Integer.parseInt(atts.getValue(atts.getIndex(tag)));
+		}catch (NumberFormatException | NullPointerException nfe)
+		{
+			System.out.println("Error evaluating " + tag +  ", " + nfe);
+			System.exit(1);
+		}		
+		if(ret<0)
+		{
+			System.out.println("Value of " + tag + " must be positive");
+			System.exit(1);			
+		}
+		
+		return ret;
+	}	
 	public void startElement(String uri, String name, String tag, Attributes atts){
 		if(tag.equals(GRAPH))
 		{
-			graph = new Graph(Integer.parseInt(atts.getValue(atts.getIndex("nbnodes"))));
-			nestNode = Integer.parseInt(atts.getValue(atts.getIndex("nestnode")));
+			graph = new Graph(parseTagInt("nbnodes",atts));
+			nestNode = parseTagInt("nestnode",atts);
 		}
 		
 		if(tag.equals(NODE))
-			crr_node = Integer.parseInt(atts.getValue(atts.getIndex("nodeidx")));
-		
+			crr_node = parseTagInt("nodeidx",atts);
+
 		if(tag.equals(WEIGHT))
-			connecting_node = Integer.parseInt(atts.getValue(atts.getIndex("targetnode")));
+			connecting_node = parseTagInt("targetnode",atts);
 	
 		if(tag.equals(SIMULATION))
 		{
-			ants= new Ant[Integer.parseInt(atts.getValue(atts.getIndex("antcolsize")))];
-			finalinst = Float.parseFloat(atts.getValue(atts.getIndex("finalinst")));
-			plevel = Float.parseFloat(atts.getValue(atts.getIndex("plevel")));
+			ants= new Ant[parseTagInt("antcolsize",atts)];
+			
+			finalinst = parseTag("finalinst",atts);
+			plevel = parseTag("plevel", atts);
 		}
 			
 		if(tag.equals(MOVE))
 		{
-			alpha = Float.parseFloat(atts.getValue(atts.getIndex("alpha")));
-			beta = Float.parseFloat(atts.getValue(atts.getIndex("beta")));
-			delta = Float.parseFloat(atts.getValue(atts.getIndex("delta")));	
+			alpha = parseTag("alpha",atts);
+			beta = parseTag("beta", atts);
+			delta = parseTag("delta", atts);	
 		}
 			
 		if(tag.equals(EVAPORATION))
 		{
-			eta = Float.parseFloat(atts.getValue(atts.getIndex("eta")));
-			rho = Float.parseFloat(atts.getValue(atts.getIndex("rho")));
+			eta = parseTag("eta", atts);
+			rho = parseTag("rho" , atts);
 		}
 	}
 	
 	public void endElement(String uri, String name, String tag)
 	{
 		if(tag.equals(WEIGHT))
-			graph.connect(crr_node, connecting_node, Integer.parseInt(read_string));
+		{
+			int connection = 0;
+			try{
+				connection = Integer.parseInt(read_string);
+			}catch (NumberFormatException | NullPointerException nfe)
+			{
+				System.out.println("Error connecting nodes," + nfe);
+				System.exit(1);
+			}
+			graph.connect(crr_node, connecting_node, connection);			
+		}
 	}
 	public void characters(char[] ch, int start, int length){
 		read_string=new String(ch,start,length);
@@ -131,12 +183,15 @@ public class Simulation extends DefaultHandler{
 		
 		int mevents=0;
 		int eevents=0;
+		float lasTime = 0;
+		
 		PEC pec = new PEC();
 		
 		for(int k=0; k< ants.length ; k++)
 		{
-			ants[k]= new Ant(graph.getNode(nestNode), graph.getSize(), alpha, beta, plevel);
-			pec.addEvPEC(new EvAntMove( Event.expRandom(delta) , ants[k]) );
+			ants[k]= new Ant(graph.getNode(nestNode), graph.getSize(), alpha, beta, plevel, graph.getWeight());
+			Link move = ants[k].getMove();
+			pec.addEvPEC(new EvAntMove( Event.expRandom((move.getWeight())*delta) , ants[k], move) );
 		}
 		
 		Event currentEvent = pec.nextEvPEC();
@@ -170,8 +225,10 @@ public class Simulation extends DefaultHandler{
 						}
 					}
 				}
-						
-				pec.addEvPEC(new EvAntMove(currenTime+Event.expRandom(5*delta) , ((EvAntMove)currentEvent).getAnt()));
+				
+				Ant ant = ((EvAntMove)currentEvent).getAnt();
+				Link move = ant.getMove();
+				pec.addEvPEC(new EvAntMove(currenTime+Event.expRandom((move.getWeight())*delta) , ant, move));
 			}
 				
 			if(currentEvent.getClass().equals(EvPhEvaporation.class))
@@ -185,8 +242,7 @@ public class Simulation extends DefaultHandler{
 			}
 			
 			currentEvent = pec.nextEvPEC();
-			
-			if(currenTime%20 < 1)
+			if( (currenTime - lasTime) > finalinst/20)
 			{
 				int min_k=-1;
 				float min_w=9999;
@@ -203,10 +259,10 @@ public class Simulation extends DefaultHandler{
 				System.out.println("Number of move events: " + mevents );
 				System.out.println("Number of evaporation events: " + eevents );
 				if(min_k!=-1)
-					System.out.println("Hamiltonian cycle: " + ants[min_k].toString() );
+					System.out.println("Hamiltonian cycle: " + ants[min_k].toString() + "\n" );
+				
+				lasTime = currenTime;
 			}
-			
 		}
-
 	}									 
 }
