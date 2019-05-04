@@ -109,8 +109,5 @@ public class Link {
 	@Override
 	public String toString() {
 		return "[" + Integer.toString(node.getId()) + ", " + Float.toString(weight) + ", "  + Float.toString(pheromone) + "]  ";
-	}
-	
-	
-	
+	}	
 }

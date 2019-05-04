@@ -8,17 +8,17 @@ import graphs.*;
  * @author José
  *
  */
-public class Ant {
+public class Ant implements AntInterface{
 	
 	LinkedList<Link> cycle =  new LinkedList<Link>();
 	LinkedList<Link> shortest_cycle = new LinkedList<Link>(); 
 	private float min_cycle = 1999999999;
 	private Node start;
-	private int n_nodes;
-	private float graph_weight;
-	float alpha;
-	float beta;
-	float gamma;
+	private static int n_nodes;
+	private static float graph_weight;
+	private static float alpha;
+	private static float beta;
+	private static float gamma;
 	
 	/**
 	 * Default constructor, sets the Ant's nest node, some simulation parameters, and some graph proprietes
@@ -29,14 +29,18 @@ public class Ant {
 	 * @param _gamma Parameter concerning the ant move event
 	 * @param _graph_weight Graph's total weight
 	 */
-	public Ant(Node _ini, int _n_nodes, float _alpha, float _beta, float _gamma, float _graph_weight)
+	public Ant(Node _ini)
 	{
-		this.n_nodes = _n_nodes;
 		this.start= _ini;
-		this.alpha = _alpha;
-		this.beta = _beta;
-		this.gamma = _gamma;
-		this.graph_weight = _graph_weight;
+	}
+	
+	public static void setParams( int _n_nodes, float _alpha, float _beta, float _gamma, float _graph_weight)
+	{
+		n_nodes = _n_nodes;
+		alpha = _alpha;
+		beta= _beta;
+		gamma = _gamma;
+		graph_weight = _graph_weight;
 	}
 	
 	/**
@@ -84,7 +88,7 @@ public class Ant {
 	}
 	
 	/**
-	 * Checks if the current Hamiltonian cycle found is shorter than the one previously found, if so saves the current cycle and weight
+	 * Checks if the current Hamiltonian cycle found is shorter than the one previously found, if so saves the current cycle and weight. Also laysdown pheromones on the cycle's nodes
 	 */
 	private void checkSize()
 	{
@@ -231,6 +235,11 @@ public class Ant {
 	public LinkedList<Link> getCycle()
 	{
 		return this.shortest_cycle;
+	}
+	
+	public Node getFirst()
+	{
+		return this.start;
 	}
 	
 	/**

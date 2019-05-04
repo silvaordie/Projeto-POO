@@ -20,7 +20,7 @@ import events.*;
 import java.util.*;
 
 /**
- * "Main" class, interperts the XML file conatining the simulation parameters and enviornment and simulates.
+ * "Main" class, interprets the XML file containing the simulation parameters and enviornment and simulates.
  * @author José
  *
  */
@@ -39,7 +39,7 @@ public class Simulation extends DefaultHandler{
 	private static int nestNode;
 		
 	private static Graph graph;
-	private static Ant[] ants;
+	private static AntInterface [] ants;
 	
 	private static float finalinst;
 	private static float plevel;
@@ -180,68 +180,33 @@ public class Simulation extends DefaultHandler{
 		} catch(IOException e){
 			System.out.println(e);
 		}
-		
-		int mevents=0;
-		int eevents=0;
 		float lasTime = 0;
 		
-		PEC pec = new PEC();
+		PEC pec = new PEC(finalinst);
+		Event[] events = new Event[ants.length];
+		SimulationEvent.setParams(alpha, beta, delta, rho, eta);
+		Ant.setParams( graph.getSize() , alpha, beta, plevel , graph.getWeight() );
 		
 		for(int k=0; k< ants.length ; k++)
 		{
-			ants[k]= new Ant(graph.getNode(nestNode), graph.getSize(), alpha, beta, plevel, graph.getWeight());
+			ants[k]= new Ant(graph.getNode(nestNode));
 			Link move = ants[k].getMove();
-			pec.addEvPEC(new EvAntMove( Event.expRandom((move.getWeight())*delta) , ants[k], move) );
+			events[k]=new EvAntMove( SimulationEvent.expRandom((move.getWeight())*delta) , ants[k], move);
 		}
+		pec.addEvPEC(events);
 		
 		Event currentEvent = pec.nextEvPEC();
-		float currenTime = currentEvent.geTime();
+		float currenTime = currentEvent.getTime();
 		
 		while(currenTime < finalinst)
 		{
-			currentEvent.simulate();
-			currenTime=currentEvent.geTime();
-			
-			if(currentEvent.getClass().equals(EvAntMove.class))
-			{
-				mevents++;
-				if(((EvAntMove)currentEvent).foundCycle())
-				{
-					Ant ant =  ((EvAntMove)currentEvent).getAnt();
-					LinkedList<Link> cycle = ant.getCycle();
+			currenTime=currentEvent.getTime();
+			events = currentEvent.simulate();
 					
-					for(int k=0; k<cycle.size(); k++)
-					{
-						Link link = cycle.get(k);
-						if(k==0)
-						{
-							Link aux = cycle.get(cycle.size()-1);
-							pec.addEvPEC(new EvPhEvaporation(currenTime + Event.expRandom(eta), link, aux.getNode(), rho));
-						}
-						else
-						{
-							Link aux = cycle.get(k-1);
-							pec.addEvPEC(new EvPhEvaporation(currenTime + Event.expRandom(eta), link, aux.getNode(), rho));							
-						}
-					}
-				}
-				
-				Ant ant = ((EvAntMove)currentEvent).getAnt();
-				Link move = ant.getMove();
-				pec.addEvPEC(new EvAntMove(currenTime+Event.expRandom((move.getWeight())*delta) , ant, move));
-			}
-				
-			if(currentEvent.getClass().equals(EvPhEvaporation.class))
-			{
-				
-				eevents++;
-				Link link = ((EvPhEvaporation)currentEvent).getLink();
-				
-				if(link.getPh() > 0)
-					pec.addEvPEC( new EvPhEvaporation( currenTime + Event.expRandom(eta) , link , ((EvPhEvaporation)currentEvent).getNode() , rho ) );
-			}
+			pec.addEvPEC(events);				
 			
 			currentEvent = pec.nextEvPEC();
+			
 			if( (currenTime - lasTime) > finalinst/20)
 			{
 				int min_k=-1;
@@ -256,8 +221,8 @@ public class Simulation extends DefaultHandler{
 					}
 				}
 				System.out.println("Present instant: " + currenTime );
-				System.out.println("Number of move events: " + mevents );
-				System.out.println("Number of evaporation events: " + eevents );
+				System.out.println("Number of move events: " + EvAntMove.getCount() );
+				System.out.println("Number of evaporation events: " + EvPhEvaporation.getCount() );
 				if(min_k!=-1)
 					System.out.println("Hamiltonian cycle: " + ants[min_k].toString() + "\n" );
 				
