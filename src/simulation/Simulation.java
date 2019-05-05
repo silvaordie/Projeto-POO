@@ -1,233 +1,74 @@
 package simulation;
 
-import java.io.File;
+import ants.AntInterface;
+import events.EvAntMove;
+import events.EvPhEvaporation;
+import events.Event;
+import graphs.Link;
+import pec.*;
 
-import java.io.IOException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
-import org.xml.sax.helpers.DefaultHandler;
-
-import graphs.*;
-import ants.*;
-import events.*;
-
-import java.util.*;
-
-/**
- * "Main" class, interprets the XML file containing the simulation parameters and enviornment and simulates.
- * @author José
- *
- */
-public class Simulation extends DefaultHandler{
-
-	private static final String GRAPH = "graph";
-	private static final String NODE = "node";
-	private static final String WEIGHT = "weight";
-	private static final String MOVE = "move";
-	private static final String EVAPORATION = "evaporation";
-	private static final String SIMULATION = "simulation";
-	private static String read_string = "";
-
-	private static int crr_node;
-	private static int connecting_node;
-	private static int nestNode;
-		
-	private static Graph graph;
-	private static AntInterface [] ants;
+public class Simulation {
 	
-	private static float finalinst;
-	private static float plevel;
-	private static float nestnode;
+	private AntInterface [] ants;
 	
-	private static float alpha;
-	private static float beta;
-	private static float delta;
-	private static float eta;
-	private static float rho;
-	
-	public void startDocument(){
-		System.out.println("Parsing...");
-	}
-	
-	public void endDocument(){
-		System.out.println("Parsing completed!");
-	}
-	
-	static float parseTag(String tag, Attributes atts)
-	{	
-		float ret=0;
-		try{
-			ret = Float.parseFloat(atts.getValue(atts.getIndex(tag)));
-		}catch (NumberFormatException | NullPointerException nfe)
-		{
-			System.out.println("Erreor evaluating " + tag +  ", " + nfe);
-			System.exit(1);
-		}
-		if(ret<0)
-		{
-			System.out.println("Value of " + tag + " must be positive");
-			System.exit(1);			
-		}
-		
-		return ret;
-	}
-	static int parseTagInt(String tag, Attributes atts)
-	{	
-		int ret=0;
-		try{
-			ret = Integer.parseInt(atts.getValue(atts.getIndex(tag)));
-		}catch (NumberFormatException | NullPointerException nfe)
-		{
-			System.out.println("Error evaluating " + tag +  ", " + nfe);
-			System.exit(1);
-		}		
-		if(ret<0)
-		{
-			System.out.println("Value of " + tag + " must be positive");
-			System.exit(1);			
-		}
-		
-		return ret;
-	}	
-	public void startElement(String uri, String name, String tag, Attributes atts){
-		if(tag.equals(GRAPH))
-		{
-			graph = new Graph(parseTagInt("nbnodes",atts));
-			nestNode = parseTagInt("nestnode",atts);
-		}
-		
-		if(tag.equals(NODE))
-			crr_node = parseTagInt("nodeidx",atts);
+	private float finalinst;
 
-		if(tag.equals(WEIGHT))
-			connecting_node = parseTagInt("targetnode",atts);
-	
-		if(tag.equals(SIMULATION))
-		{
-			ants= new Ant[parseTagInt("antcolsize",atts)];
-			
-			finalinst = parseTag("finalinst",atts);
-			plevel = parseTag("plevel", atts);
-		}
-			
-		if(tag.equals(MOVE))
-		{
-			alpha = parseTag("alpha",atts);
-			beta = parseTag("beta", atts);
-			delta = parseTag("delta", atts);	
-		}
-			
-		if(tag.equals(EVAPORATION))
-		{
-			eta = parseTag("eta", atts);
-			rho = parseTag("rho" , atts);
-		}
-	}
-	
-	public void endElement(String uri, String name, String tag)
+	Simulation(AntInterface[] _ants, float _finalinst)
 	{
-		if(tag.equals(WEIGHT))
-		{
-			int connection = 0;
-			try{
-				connection = Integer.parseInt(read_string);
-			}catch (NumberFormatException | NullPointerException nfe)
-			{
-				System.out.println("Error connecting nodes," + nfe);
-				System.exit(1);
-			}
-			graph.connect(crr_node, connecting_node, connection);			
-		}
-	}
-	public void characters(char[] ch, int start, int length){
-		read_string=new String(ch,start,length);
+		this.ants = _ants;
+		this.finalinst = _finalinst;
 	}
 	
-	public void warning(SAXParseException e)throws SAXParseException{
-		System.out.println("Warning! "+ e.getMessage());
-	}
-	
-	public void error(SAXParseException e)throws SAXParseException{
-		System.out.println("Error! "+ e.getMessage());
-	}
-	
-	public void fatalError(SAXParseException e) throws SAXParseException{
-		System.out.println("Fatal error! "+ e.getMessage()+"\nAbortando");
-		System.exit(-1);
-	}
-	
-	public static void main(String args[])
+	public void run(float delta)
 	{
-		if(args.length != 1){
-			System.out.println("Usage: java ArtigoHandler <nome do fich.xml>");
-			return;
-		}
-		SAXParserFactory factory = SAXParserFactory.newInstance();
-		factory.setValidating(true);
-		try{
-			SAXParser parser = factory.newSAXParser();
-			parser.parse(new File(args[0]),new Simulation());
-		} catch(ParserConfigurationException e){
-			System.out.println(e);
-		} catch(SAXException e){
-			System.out.println(e);
-		} catch(IOException e){
-			System.out.println(e);
-		}
 		float lasTime = 0;
 		
 		PEC pec = new PEC(finalinst);
 		Event[] events = new Event[ants.length];
-		SimulationEvent.setParams(alpha, beta, delta, rho, eta);
-		Ant.setParams( graph.getSize() , alpha, beta, plevel , graph.getWeight() );
+		float currenTime = 0;
 		
 		for(int k=0; k< ants.length ; k++)
 		{
-			ants[k]= new Ant(graph.getNode(nestNode));
 			Link move = ants[k].getMove();
-			events[k]=new EvAntMove( SimulationEvent.expRandom((move.getWeight())*delta) , ants[k], move);
+			events[k]=new EvAntMove( EvAntMove.expRandom((move.getWeight())*delta) , ants[k], move);
 		}
 		pec.addEvPEC(events);
 		
 		Event currentEvent = pec.nextEvPEC();
-		float currenTime = currentEvent.getTime();
 		
 		while(currenTime < finalinst)
 		{
 			currenTime=currentEvent.getTime();
-			events = currentEvent.simulate();
 					
-			pec.addEvPEC(events);				
+			pec.addEvPEC( currentEvent.simulate() );				
 			
 			currentEvent = pec.nextEvPEC();
 			
 			if( (currenTime - lasTime) > finalinst/20)
+				lasTime = printSim(currenTime);
+		}
+	}
+	
+	public float printSim(float time)
+	{
+		int min_k=-1;
+		float min_w=9999;
+		
+		for(int k=0; k<ants.length ; k++)
+		{
+			if(ants[k].getWeight() < min_w)
 			{
-				int min_k=-1;
-				float min_w=9999;
-				
-				for(int k=0; k<ants.length ; k++)
-				{
-					if(ants[k].getWeight() < min_w)
-					{
-						min_k=k;
-						min_w=ants[k].getWeight();
-					}
-				}
-				System.out.println("Present instant: " + currenTime );
-				System.out.println("Number of move events: " + EvAntMove.getCount() );
-				System.out.println("Number of evaporation events: " + EvPhEvaporation.getCount() );
-				if(min_k!=-1)
-					System.out.println("Hamiltonian cycle: " + ants[min_k].toString() + "\n" );
-				
-				lasTime = currenTime;
+				min_k=k;
+				min_w=ants[k].getWeight();
 			}
 		}
-	}									 
+		System.out.println("Present instant: " + time );
+		System.out.println("Number of move events: " + EvAntMove.getCount() );
+		System.out.println("Number of evaporation events: " + EvPhEvaporation.getCount() );
+		if(min_k!=-1)
+			System.out.println("Hamiltonian cycle: " + ants[min_k].toString() + "\n" );
+		
+		return time;
+	}
+	
 }

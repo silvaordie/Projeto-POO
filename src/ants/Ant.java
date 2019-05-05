@@ -59,7 +59,7 @@ public class Ant implements AntInterface{
 		for(k=0; k<weights.length; k++)
 		{
 			temp=val.get(k);
-			weights[k]=(this.alpha + temp.getPh())/(this.beta + temp.getWeight());
+			weights[k]=(alpha + temp.getPh())/(beta + temp.getWeight());
 			count=count+weights[k];
 		}
 		
@@ -198,11 +198,12 @@ public class Ant implements AntInterface{
 			if(this.cycle.size()==this.n_nodes)
 			{
 				this.checkSize();
+				//Clear the cycle
+				this.cycle.clear();	
 				return true;
-			}
-
-			//Clear the cycle
-			this.cycle.clear();			
+			}	
+			this.cycle.clear();	
+			return false;
 		}
 		else
 		{

@@ -49,7 +49,7 @@ public class EvPhEvaporation extends SimulationEvent{
 		
 		if(this.link.getPh()>0) 
 		{
-			events[0] = new EvPhEvaporation( expRandom(eta), this.link, this.no);
+			events[0] = new EvPhEvaporation( this.time + expRandom(eta), this.link, this.no);
 			return events;		
 		}
 		else
@@ -84,33 +84,17 @@ public class EvPhEvaporation extends SimulationEvent{
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
+
 		if (getClass() != obj.getClass())
 			return false;
-		EvPhEvaporation other = (EvPhEvaporation) obj;
-		if (link == null) 
-		{
-			if (other.link != null)
-				return false;
-			else
-				return true;
-		} 
-		else 
-		{
-			EvPhEvaporation evento = other;
-			if(this.link.getNode().equals(evento.link.getNode()) && this.no==evento.no)
-				return true;
-			else
-			{
-				if(this.no.equals(evento.link.getNode()) && this.link.getNode().equals(evento.no) )
-					return true;
-				else
-					return false;
-			}
-		}
+		
+		EvPhEvaporation evento = (EvPhEvaporation) obj;
+
+		if( ( this.no.equals(evento.link.getNode()) && this.link.getNode().equals(evento.no) ) || ( this.no.equals(evento.no) && this.link.getNode().equals(evento.link.getNode()) ) )
+			return true;
+		else
+			return false;
+
 	}
 	
 	

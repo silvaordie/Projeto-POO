@@ -1,4 +1,6 @@
-package events;
+
+package pec;
+import events.*;
 
 import java.util.*;
 
@@ -27,6 +29,7 @@ public class PEC {
 		Event aux;
 		for(int v=0; _events!=null && v<_events.length; v++)
 		{
+			boolean found = false;
 			event = _events[v];
 			if( (event != null) && (event.getTime() < (this.finalinst+10)) )
 			{
@@ -35,11 +38,17 @@ public class PEC {
 				else
 				{
 					int k;
-					for(k=0; k<this.events.size(); k++)
+					for(k=0;k<this.events.size() && !found; k++)
 					{
 						aux = events.get(k);
 						if(event.equals(aux))
-							return;
+							found=true;
+					}
+
+					for(k=0; k<this.events.size() && !found; k++)
+					{
+						aux = events.get(k);
+
 						if(event.getTime() < aux.getTime())
 						{
 							if(k==0)
