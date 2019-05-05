@@ -9,7 +9,7 @@ import java.util.*;
 public class Node{
 		
 		private int  id;
-		LinkedList<Link> adj = new LinkedList<Link>();
+		private LinkedList<Link> adj = new LinkedList<Link>();
 		
 		/**
 		 * Default constructor

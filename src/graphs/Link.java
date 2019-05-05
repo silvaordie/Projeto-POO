@@ -6,8 +6,8 @@ import java.util.*;
  *
  */
 public class Link {
-	float weight;
-	float pheromone=0;
+	private float weight;
+	private float pheromone=0;
 	Node node;
 	
 	/**

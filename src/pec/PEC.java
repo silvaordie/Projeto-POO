@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class PEC {
 	
-	LinkedList<Event> events = new LinkedList<Event>();
+	private LinkedList<Event> events = new LinkedList<Event>();
 	private float finalinst;
 	
 	public PEC(float _finalinst)

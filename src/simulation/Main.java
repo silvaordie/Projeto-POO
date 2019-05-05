@@ -95,7 +95,7 @@ public class Main extends DefaultHandler{
 	
 		if(tag.equals(SIMULATION))
 		{
-			ants= new Ant[parseTagInt("antcolsize",atts)];
+			ants= new AntInterface[parseTagInt("antcolsize",atts)];
 			
 			finalinst = parseTag("finalinst",atts);
 			plevel = parseTag("plevel", atts);
@@ -160,7 +160,7 @@ public class Main extends DefaultHandler{
 		for(int k=0; k< ants.length ; k++)
 			ants[k]= new Ant(graph.getNode(nestNode));
 		
-		Simulation simulation = new Simulation( ants, finalinst);
+		SimulationInterface simulation = new Simulation( ants, finalinst);
 		
 		simulation.run(delta);
 		

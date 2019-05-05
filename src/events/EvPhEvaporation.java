@@ -9,9 +9,9 @@ import graphs.*;
  */
 public class EvPhEvaporation extends SimulationEvent{
 	
-	Link link;
-	Node no;
-	static int eevents = 0;
+	private Link link;
+	private Node no;
+	private static int eevents = 0;
 	/**
 	 * Default constructor, receives the Event's end time, the Link that will evaporate pheromones, the starting Node of the given link and the pheromone evaporation value
 	 * @param _time Event's end time
@@ -49,7 +49,7 @@ public class EvPhEvaporation extends SimulationEvent{
 		
 		if(this.link.getPh()>0) 
 		{
-			events[0] = new EvPhEvaporation( this.time + expRandom(eta), this.link, this.no);
+			events[0] = new EvPhEvaporation( this.getTime() + expRandom(eta), this.link, this.no);
 			return events;		
 		}
 		else

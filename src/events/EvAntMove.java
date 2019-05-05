@@ -57,12 +57,12 @@ public class EvAntMove extends SimulationEvent{
 				else
 					aux = cycle.get(k-1);
 				
-				events.add( new EvPhEvaporation(this.time + expRandom(eta), link, aux.getNode()) )	;		
+				events.add( new EvPhEvaporation(this.getTime() + expRandom(eta), link, aux.getNode()) )	;		
 			}			
 		}
 
 		Link move = this.ant.getMove();
-		events.add( new EvAntMove(this.time + expRandom(delta * move.getWeight()), this.ant, move ) );
+		events.add( new EvAntMove(this.getTime() + expRandom(delta * move.getWeight()), this.ant, move ) );
 	
 		return events.toArray(new SimulationEvent[0]);
 	}

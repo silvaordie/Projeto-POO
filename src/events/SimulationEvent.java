@@ -9,7 +9,7 @@ import java.util.*;
  */
 public abstract class SimulationEvent implements Event{
 	
-	float time;
+	private float time;
 	static float rho;
 	static float eta;
 	static float alfa;

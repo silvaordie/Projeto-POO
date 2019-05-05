@@ -107,7 +107,7 @@ public class Ant implements AntInterface{
 			this.shortest_cycle = (LinkedList<Link>)this.cycle.clone();
 			this.min_cycle = sum;
 		}
-		float increment = this.gamma * (this.graph_weight/sum) ;
+		float increment = gamma * (graph_weight/sum) ;
 		Node no = this.start;
 		for (k=0; k<this.cycle.size() ;k++)
 		{
@@ -195,7 +195,7 @@ public class Ant implements AntInterface{
 		{
 			this.cycle.add(link);
 			//Check if it is a hamiltonian cycle
-			if(this.cycle.size()==this.n_nodes)
+			if(this.cycle.size()==n_nodes)
 			{
 				this.checkSize();
 				//Clear the cycle

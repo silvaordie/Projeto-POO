@@ -7,7 +7,7 @@ import java.util.*;
  *
  */
 public class Graph{
-	Node[] nodes;
+	private Node[] nodes;
 	
 	/**
 	 * Default constructor, for graph initialization

@@ -1,0 +1,94 @@
+Present instant: 15.807718
+Number of move events: 32
+Number of evaporation events: 8
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 31.733704
+Number of move events: 69
+Number of evaporation events: 15
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 46.80634
+Number of move events: 85
+Number of evaporation events: 25
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 61.97162
+Number of move events: 106
+Number of evaporation events: 36
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 77.32034
+Number of move events: 137
+Number of evaporation events: 44
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 94.057365
+Number of move events: 184
+Number of evaporation events: 50
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 109.18163
+Number of move events: 214
+Number of evaporation events: 57
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 125.287285
+Number of move events: 240
+Number of evaporation events: 70
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 141.02481
+Number of move events: 268
+Number of evaporation events: 77
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 156.04118
+Number of move events: 299
+Number of evaporation events: 88
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 171.29724
+Number of move events: 330
+Number of evaporation events: 96
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 186.37076
+Number of move events: 354
+Number of evaporation events: 108
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 202.41354
+Number of move events: 382
+Number of evaporation events: 119
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 217.5682
+Number of move events: 401
+Number of evaporation events: 135
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 233.08612
+Number of move events: 434
+Number of evaporation events: 147
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 248.32709
+Number of move events: 460
+Number of evaporation events: 150
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 263.54633
+Number of move events: 477
+Number of evaporation events: 158
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 278.88773
+Number of move events: 508
+Number of evaporation events: 169
+Hamiltonian cycle: {1,5,4,2,3}
+
+Present instant: 293.89725
+Number of move events: 529
+Number of evaporation events: 175
+Hamiltonian cycle: {1,5,4,2,3}

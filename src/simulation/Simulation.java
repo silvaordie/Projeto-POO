@@ -7,9 +7,10 @@ import events.Event;
 import graphs.Link;
 import pec.*;
 
-public class Simulation {
+public class Simulation implements SimulationInterface{
 	
 	private AntInterface [] ants;
+	private PEC pec;
 	
 	private float finalinst;
 
@@ -23,7 +24,7 @@ public class Simulation {
 	{
 		float lasTime = 0;
 		
-		PEC pec = new PEC(finalinst);
+		this.pec = new PEC(finalinst);
 		Event[] events = new Event[ants.length];
 		float currenTime = 0;
 		
@@ -32,17 +33,17 @@ public class Simulation {
 			Link move = ants[k].getMove();
 			events[k]=new EvAntMove( EvAntMove.expRandom((move.getWeight())*delta) , ants[k], move);
 		}
-		pec.addEvPEC(events);
+		this.pec.addEvPEC(events);
 		
-		Event currentEvent = pec.nextEvPEC();
+		Event currentEvent = this.pec.nextEvPEC();
 		
 		while(currenTime < finalinst)
 		{
 			currenTime=currentEvent.getTime();
 					
-			pec.addEvPEC( currentEvent.simulate() );				
+			this.pec.addEvPEC( currentEvent.simulate() );				
 			
-			currentEvent = pec.nextEvPEC();
+			currentEvent = this.pec.nextEvPEC();
 			
 			if( (currenTime - lasTime) > finalinst/20)
 				lasTime = printSim(currenTime);
