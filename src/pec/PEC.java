@@ -72,6 +72,13 @@ public class PEC {
 	 */
 	public Event nextEvPEC()
 	{
-		return this.events.removeFirst();		
+		try
+		{
+			return this.events.removeFirst();
+		}catch(NoSuchElementException e)
+		{
+			System.exit(-2);
+			return null;
+		}
 	}
 }

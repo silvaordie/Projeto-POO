@@ -55,10 +55,10 @@ public class Main extends DefaultHandler{
 			ret = Float.parseFloat(atts.getValue(atts.getIndex(tag)));
 		}catch (NumberFormatException | NullPointerException nfe)
 		{
-			System.exit(1);
+			System.exit(-1);
 		}
 		if(ret<0)
-			System.exit(1);			
+			System.exit(-1);			
 		
 		return ret;
 	}
@@ -69,11 +69,11 @@ public class Main extends DefaultHandler{
 			ret = Integer.parseInt(atts.getValue(atts.getIndex(tag)));
 		}catch (NumberFormatException | NullPointerException nfe)
 		{
-			System.exit(1);
+			System.exit(-1);
 		}		
 		if(ret<0)
 		{
-			System.exit(1);			
+			System.exit(-1);			
 		}
 		
 		return ret;
@@ -124,7 +124,7 @@ public class Main extends DefaultHandler{
 				connection = Integer.parseInt(read_string);
 			}catch (NumberFormatException | NullPointerException nfe)
 			{
-				System.exit(1);
+				System.exit(-1);
 			}
 			graph.connect(crr_node, connecting_node, connection);			
 		}
@@ -135,13 +135,13 @@ public class Main extends DefaultHandler{
 	
 	
 	public void fatalError(SAXParseException e) throws SAXParseException{
-		System.exit(-1);
+		System.exit(-4);
 	}
 	
 	public static void main(String args[])
 	{
 		if(args.length != 1){
-			System.exit(1);
+			System.exit(-5);
 		}
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		factory.setValidating(true);
@@ -149,11 +149,11 @@ public class Main extends DefaultHandler{
 			SAXParser parser = factory.newSAXParser();
 			parser.parse(new File(args[0]),new Main());
 		} catch(ParserConfigurationException e){
-			System.exit(1);
+			System.exit(-4);
 		} catch(SAXException e){
-			System.exit(1);
+			System.exit(-4);
 		} catch(IOException e){
-			System.exit(1);   }
+			System.exit(-3);   }
 		
 		SimulationEvent.setParams(alpha, beta, delta, rho, eta);
 		Ant.setParams( graph.getSize() , alpha, beta, plevel , graph.getWeight() );
@@ -164,5 +164,6 @@ public class Main extends DefaultHandler{
 		
 		simulation.run(delta);
 		
+		System.exit(0);
 	}									 
 }
