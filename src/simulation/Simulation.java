@@ -64,7 +64,7 @@ public class Simulation implements SimulationInterface{
 				min_w=ants[k].getWeight();
 			}
 		}
-		System.out.println("\n\\\\noindent Observation " + obs + ":\\\\");
+		System.out.println("\n\\noindent Observation " + obs + ":\\\\");
 		System.out.println("		\\indent Present instant: " + time +"\\\\");
 		System.out.println("		\\indent Number of move events: " + EvAntMove.getCount() +"\\\\");
 		System.out.println("		\\indent Number of evaporation events: " + EvPhEvaporation.getCount() +"\\\\");
