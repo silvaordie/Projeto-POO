@@ -104,7 +104,9 @@ public class Ant implements AntInterface{
 		
 		if(sum < this.min_cycle)
 		{
-			this.shortest_cycle = (LinkedList<Link>)this.cycle.clone();
+			this.shortest_cycle.clear();
+			for(k=0; k<this.cycle.size(); k++)
+				this.shortest_cycle.add(this.cycle.get(k));
 			this.min_cycle = sum;
 		}
 		float increment = gamma * (graph_weight/sum) ;

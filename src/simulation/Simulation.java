@@ -23,6 +23,7 @@ public class Simulation implements SimulationInterface{
 	public void run(float delta)
 	{
 		float lasTime = 0;
+		int obs = 0;
 		
 		this.pec = new PEC(finalinst);
 		Event[] events = new Event[ants.length];
@@ -45,12 +46,12 @@ public class Simulation implements SimulationInterface{
 			
 			currentEvent = this.pec.nextEvPEC();
 			
-			if( (currenTime - lasTime) > finalinst/20)
-				lasTime = printSim(currenTime);
+			if( (currenTime - lasTime) > finalinst/21)
+				lasTime = printSim(currenTime, ++obs);
 		}
 	}
 	
-	public float printSim(float time)
+	public float printSim(float time, int obs)
 	{
 		int min_k=-1;
 		float min_w=9999;
@@ -63,11 +64,12 @@ public class Simulation implements SimulationInterface{
 				min_w=ants[k].getWeight();
 			}
 		}
-		System.out.println("\n\\noindent Present instant: " + time +"\\\\");
-		System.out.println("Number of move events: " + EvAntMove.getCount() +"\\\\");
-		System.out.println("Number of evaporation events: " + EvPhEvaporation.getCount() +"\\\\");
+		System.out.println("\n\\\\noindent Observation " + obs + ":\\\\");
+		System.out.println("		\\indent Present instant: " + time +"\\\\");
+		System.out.println("		\\indent Number of move events: " + EvAntMove.getCount() +"\\\\");
+		System.out.println("		\\indent Number of evaporation events: " + EvPhEvaporation.getCount() +"\\\\");
 		if(min_k!=-1)
-			System.out.println("Hamiltonian cycle: " + ants[min_k].toString() +"\\\\");
+			System.out.println("		\\indent Hamiltonian cycle: " + ants[min_k].toString() +"\\\\");
 		
 		return time;
 	}
