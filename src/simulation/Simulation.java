@@ -63,11 +63,11 @@ public class Simulation implements SimulationInterface{
 				min_w=ants[k].getWeight();
 			}
 		}
-		System.out.println("\nPresent instant: " + time );
-		System.out.println("Number of move events: " + EvAntMove.getCount() );
-		System.out.println("Number of evaporation events: " + EvPhEvaporation.getCount() );
+		System.out.println("\n\\noindent Present instant: " + time +"\\\\");
+		System.out.println("Number of move events: " + EvAntMove.getCount() +"\\\\");
+		System.out.println("Number of evaporation events: " + EvPhEvaporation.getCount() +"\\\\");
 		if(min_k!=-1)
-			System.out.println("Hamiltonian cycle: " + ants[min_k].toString() );
+			System.out.println("Hamiltonian cycle: " + ants[min_k].toString() +"\\\\");
 		
 		return time;
 	}

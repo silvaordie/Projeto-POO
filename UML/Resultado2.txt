@@ -1,79 +1,68 @@
+\noindent Present instant: 1.1510961\\
+Number of move events: 3\\
+Number of evaporation events: 0\\
 
-Present instant: 0.5237772
-Number of move events: 4
-Number of evaporation events: 0
+\noindent Present instant: 1.7733023\\
+Number of move events: 6\\
+Number of evaporation events: 0\\
+Hamiltonian cycle: {1,2,3,4,5}\\
 
-Present instant: 1.460396
-Number of move events: 8
-Number of evaporation events: 0
-Hamiltonian cycle: {1,2,3,4,5}
+\noindent Present instant: 2.3528314\\
+Number of move events: 13\\
+Number of evaporation events: 0\\
+Hamiltonian cycle: {1,2,3,4,5}\\
 
-Present instant: 2.1673298
-Number of move events: 12
-Number of evaporation events: 0
-Hamiltonian cycle: {1,2,3,4,5}
+\noindent Present instant: 3.0121257\\
+Number of move events: 16\\
+Number of evaporation events: 0\\
+Hamiltonian cycle: {1,2,3,4,5}\\
 
-Present instant: 2.7061448
-Number of move events: 17
-Number of evaporation events: 0
-Hamiltonian cycle: {1,2,3,4,5}
+\noindent Present instant: 3.595293\\
+Number of move events: 22\\
+Number of evaporation events: 0\\
+Hamiltonian cycle: {1,2,3,4,5}\\
 
-Present instant: 3.3876092
-Number of move events: 20
-Number of evaporation events: 0
-Hamiltonian cycle: {1,2,3,4,5}
+\noindent Present instant: 4.5250564\\
+Number of move events: 25\\
+Number of evaporation events: 0\\
+Hamiltonian cycle: {1,2,3,4,5}\\
 
-Present instant: 3.8948693
-Number of move events: 23
-Number of evaporation events: 2
-Hamiltonian cycle: {1,2,3,4,5}
+\noindent Present instant: 5.343624\\
+Number of move events: 26\\
+Number of evaporation events: 0\\
+Hamiltonian cycle: {1,2,3,4,5}\\
 
-Present instant: 4.4020586
-Number of move events: 30
-Number of evaporation events: 3
-Hamiltonian cycle: {1,2,3,4,5}
+\noindent Present instant: 5.9619265\\
+Number of move events: 27\\
+Number of evaporation events: 0\\
+Hamiltonian cycle: {1,2,3,4,5}\\
 
-Present instant: 4.9124546
-Number of move events: 34
-Number of evaporation events: 3
-Hamiltonian cycle: {1,2,3,4,5}
+\noindent Present instant: 6.4647326\\
+Number of move events: 31\\
+Number of evaporation events: 0\\
+Hamiltonian cycle: {1,2,3,4,5}\\
 
-Present instant: 5.642054
-Number of move events: 37
-Number of evaporation events: 4
-Hamiltonian cycle: {1,2,3,4,5}
+\noindent Present instant: 7.048833\\
+Number of move events: 33\\
+Number of evaporation events: 1\\
+Hamiltonian cycle: {1,2,3,4,5}\\
 
-Present instant: 6.185468
-Number of move events: 39
-Number of evaporation events: 4
-Hamiltonian cycle: {1,2,3,4,5}
+\noindent Present instant: 7.5808396\\
+Number of move events: 36\\
+Number of evaporation events: 1\\
+Hamiltonian cycle: {1,2,3,4,5}\\
 
-Present instant: 6.738944
-Number of move events: 40
-Number of evaporation events: 5
-Hamiltonian cycle: {1,2,3,4,5}
+\noindent Present instant: 8.112687\\
+Number of move events: 38\\
+Number of evaporation events: 1\\
+Hamiltonian cycle: {1,2,3,4,5}\\
 
-Present instant: 7.2406187
-Number of move events: 44
-Number of evaporation events: 5
-Hamiltonian cycle: {1,2,3,4,5}
+\noindent Present instant: 8.831924\\
+Number of move events: 44\\
+Number of evaporation events: 1\\
+Hamiltonian cycle: {1,2,3,4,5}\\
 
-Present instant: 7.7954907
-Number of move events: 48
-Number of evaporation events: 8
-Hamiltonian cycle: {1,2,3,4,5}
-
-Present instant: 8.449462
-Number of move events: 51
-Number of evaporation events: 8
-Hamiltonian cycle: {1,2,3,4,5}
-
-Present instant: 9.057221
-Number of move events: 52
-Number of evaporation events: 8
-Hamiltonian cycle: {1,2,3,4,5}
-
-Present instant: 9.97683
-Number of move events: 55
-Number of evaporation events: 8
-Hamiltonian cycle: {1,2,3,4,5}
+\noindent Present instant: 9.565096\\
+Number of move events: 49\\
+Number of evaporation events: 2\\
+Hamiltonian cycle: {1,2,3,4,5}\\
