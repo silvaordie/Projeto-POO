@@ -1,119 +1,120 @@
+
 \noindent Observation 1:\\
-		\indent Present instant: 23.815752\\
-		\indent Number of move events: 1261\\
-		\indent Number of evaporation events: 40\\
-		\indent Hamiltonian cycle: {5,4,8,7,6,10,9,3,2,1}\\
+		\indent Present instant: 23.824883\\
+		\indent Number of move events: 965\\
+		\indent Number of evaporation events: 68\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 2:\\
-		\indent Present instant: 47.633675\\
-		\indent Number of move events: 2722\\
-		\indent Number of evaporation events: 115\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,6,7,8,9}\\
+		\indent Present instant: 47.658455\\
+		\indent Number of move events: 1954\\
+		\indent Number of evaporation events: 151\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 3:\\
-		\indent Present instant: 71.45635\\
-		\indent Number of move events: 4094\\
-		\indent Number of evaporation events: 192\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 71.499146\\
+		\indent Number of move events: 2883\\
+		\indent Number of evaporation events: 233\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 4:\\
-		\indent Present instant: 95.31422\\
-		\indent Number of move events: 5493\\
-		\indent Number of evaporation events: 256\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 95.3176\\
+		\indent Number of move events: 3851\\
+		\indent Number of evaporation events: 312\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 5:\\
-		\indent Present instant: 119.15521\\
-		\indent Number of move events: 6973\\
-		\indent Number of evaporation events: 320\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 119.139946\\
+		\indent Number of move events: 4811\\
+		\indent Number of evaporation events: 384\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 6:\\
-		\indent Present instant: 142.96661\\
-		\indent Number of move events: 8425\\
-		\indent Number of evaporation events: 391\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 142.97586\\
+		\indent Number of move events: 5772\\
+		\indent Number of evaporation events: 453\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 7:\\
-		\indent Present instant: 166.79367\\
-		\indent Number of move events: 9840\\
-		\indent Number of evaporation events: 467\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 166.82031\\
+		\indent Number of move events: 6673\\
+		\indent Number of evaporation events: 509\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 8:\\
-		\indent Present instant: 190.62218\\
-		\indent Number of move events: 11265\\
-		\indent Number of evaporation events: 536\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 190.63162\\
+		\indent Number of move events: 7639\\
+		\indent Number of evaporation events: 565\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 9:\\
-		\indent Present instant: 214.43668\\
-		\indent Number of move events: 12695\\
-		\indent Number of evaporation events: 598\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 214.45271\\
+		\indent Number of move events: 8566\\
+		\indent Number of evaporation events: 636\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 10:\\
-		\indent Present instant: 238.27\\
-		\indent Number of move events: 14183\\
-		\indent Number of evaporation events: 662\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 238.26248\\
+		\indent Number of move events: 9557\\
+		\indent Number of evaporation events: 703\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 11:\\
-		\indent Present instant: 262.11624\\
-		\indent Number of move events: 15633\\
-		\indent Number of evaporation events: 717\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 262.1228\\
+		\indent Number of move events: 10485\\
+		\indent Number of evaporation events: 780\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 12:\\
-		\indent Present instant: 285.95587\\
-		\indent Number of move events: 17012\\
-		\indent Number of evaporation events: 772\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 285.97742\\
+		\indent Number of move events: 11372\\
+		\indent Number of evaporation events: 840\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 13:\\
-		\indent Present instant: 309.82727\\
-		\indent Number of move events: 18537\\
-		\indent Number of evaporation events: 838\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 309.78806\\
+		\indent Number of move events: 12342\\
+		\indent Number of evaporation events: 893\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 14:\\
-		\indent Present instant: 333.71954\\
-		\indent Number of move events: 19974\\
-		\indent Number of evaporation events: 888\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 333.61438\\
+		\indent Number of move events: 13259\\
+		\indent Number of evaporation events: 960\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 15:\\
-		\indent Present instant: 357.5299\\
-		\indent Number of move events: 21451\\
-		\indent Number of evaporation events: 952\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 357.4285\\
+		\indent Number of move events: 14116\\
+		\indent Number of evaporation events: 1011\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 16:\\
-		\indent Present instant: 381.36865\\
-		\indent Number of move events: 22865\\
-		\indent Number of evaporation events: 1011\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 381.27042\\
+		\indent Number of move events: 14997\\
+		\indent Number of evaporation events: 1059\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 17:\\
-		\indent Present instant: 405.19113\\
-		\indent Number of move events: 24309\\
-		\indent Number of evaporation events: 1066\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 405.0929\\
+		\indent Number of move events: 15896\\
+		\indent Number of evaporation events: 1122\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 18:\\
-		\indent Present instant: 429.02313\\
-		\indent Number of move events: 25795\\
-		\indent Number of evaporation events: 1125\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 428.93945\\
+		\indent Number of move events: 16877\\
+		\indent Number of evaporation events: 1171\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 19:\\
-		\indent Present instant: 452.89175\\
-		\indent Number of move events: 27215\\
-		\indent Number of evaporation events: 1181\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 452.78232\\
+		\indent Number of move events: 17809\\
+		\indent Number of evaporation events: 1217\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\
 
 \noindent Observation 20:\\
-		\indent Present instant: 476.73172\\
-		\indent Number of move events: 28696\\
-		\indent Number of evaporation events: 1236\\
-		\indent Hamiltonian cycle: {5,4,3,2,1,10,9,8,7,6}\\
+		\indent Present instant: 476.60394\\
+		\indent Number of move events: 18735\\
+		\indent Number of evaporation events: 1256\\
+		\indent Hamiltonian cycle: $\{$5,4,3,2,1,10,9,7,8,6$\}$\\

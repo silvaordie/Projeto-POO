@@ -3,12 +3,14 @@ package events;
 import java.util.*;
 
 /**
- * Represents an event
+ * The base of the solutions' events
  * @author José
  *
  */
 public abstract class SimulationEvent implements Event{
-	
+	/**
+	 * Events duration
+	 */
 	private float time;
 	static float rho;
 	static float eta;
@@ -28,6 +30,14 @@ public abstract class SimulationEvent implements Event{
 	 */
 	public abstract SimulationEvent[] simulate();
 	
+	/**
+	 * Sets some event parameters
+	 * @param _alpha Alpha parameter
+	 * @param _beta Beta parameter
+	 * @param _delta Delta parameter
+	 * @param _rho Rho parameter
+	 * @param _eta Eta parameter
+	 */
 	public static void setParams(float _alpha, float _beta, float _delta, float _rho, float _eta)
 	{
 		alfa = _alpha;
@@ -45,9 +55,9 @@ public abstract class SimulationEvent implements Event{
 		return this.time;
 	}
 	/**
-	 * voltar a este ponto mais tarde
-	 * @param m Mean value
-	 * @return 
+	 * Returns the event's duration based on it's average duration
+	 * @param m Average duration
+	 * @return Event's duration
 	 */
 	public static float expRandom(float m)
 	{

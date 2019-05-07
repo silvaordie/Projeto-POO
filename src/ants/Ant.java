@@ -10,10 +10,25 @@ import graphs.*;
  */
 public class Ant implements AntInterface{
 	
+	/**
+	 * Ant's current cycle
+	 */
 	LinkedList<Link> cycle =  new LinkedList<Link>();
+	/**
+	 * Shortest Hamiltonian cycle found
+	 */
 	LinkedList<Link> shortest_cycle = new LinkedList<Link>(); 
+	/**
+	 * Shortest Hamiltonian cycle weight
+	 */
 	private float min_cycle = 1999999999;
+	/**
+	 * Initial node
+	 */
 	private Node start;
+	/*
+	 * Some parameters
+	 */
 	private static int n_nodes;
 	private static float graph_weight;
 	private static float alpha;
@@ -34,6 +49,14 @@ public class Ant implements AntInterface{
 		this.start= _ini;
 	}
 	
+	/**
+	 * Sets some ant movement parameters
+	 * @param _n_nodes Graph's number of nodes
+	 * @param _alpha Alfa parameter (Ant movement related)
+	 * @param _beta Beta parameter (Ant move related)
+	 * @param _gamma Eta parameter (Mean time to tranverse a link)
+	 * @param _graph_weight Total graph weight
+	 */
 	public static void setParams( int _n_nodes, float _alpha, float _beta, float _gamma, float _graph_weight)
 	{
 		n_nodes = _n_nodes;
@@ -88,7 +111,7 @@ public class Ant implements AntInterface{
 	}
 	
 	/**
-	 * Checks if the current Hamiltonian cycle found is shorter than the one previously found, if so saves the current cycle and weight. Also laysdown pheromones on the cycle's nodes
+	 * Checks if the current Hamiltonian cycle found is shorter than the one previously found, if so saves the current cycle and weight. Also lays down pheromones on the cycle's links
 	 */
 	private void checkSize()
 	{
@@ -121,7 +144,7 @@ public class Ant implements AntInterface{
 	
 	/**
 	 * Returns the Link that the Ant should traverse to
-	 * @return
+	 * @return The ant's next link to cross
 	 */
 	public Link getMove()
 	{
@@ -176,6 +199,9 @@ public class Ant implements AntInterface{
 			}
 			//In case of no valid edge, all available edges are considered valid
 			val=adj;
+			Random rand = new Random();
+			return val.get(rand.nextInt(val.size()-1));
+			
 		}
 		
 		//Returns the most likely edge
@@ -239,14 +265,16 @@ public class Ant implements AntInterface{
 	{
 		return this.shortest_cycle;
 	}
-	
+	/**
+	 * Returns the ant's nest node
+	 */
 	public Node getFirst()
 	{
 		return this.start;
 	}
 	
 	/**
-	 * Returns the weigh of the shortes cycle found
+	 * Returns the weigh of the shortest cycle found
 	 * @return
 	 */
 	public float getWeight()
@@ -256,7 +284,7 @@ public class Ant implements AntInterface{
 	
 	@Override
 	public String toString() {
-		String str = new String("{" + this.start.getId());
+		String str = new String("$\\{$" + this.start.getId());
 		Link link;
 		Node no;
 		
@@ -268,6 +296,6 @@ public class Ant implements AntInterface{
 			str=str + "," + Integer.toString(no.getId()) ;
 		}
 		
-		return str + "}";
+		return str + "$\\}$";
 	}
 }

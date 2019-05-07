@@ -10,10 +10,19 @@ import java.util.*;
  *
  */
 public class PEC {
-	
+	/**
+	 * List of all pending event sordered by time
+	 */
 	private LinkedList<Event> events = new LinkedList<Event>();
+	/**
+	 * Simulation's final instant
+	 */
 	private float finalinst;
 	
+	/**
+	 * Default constructor, receives the simulation duration
+	 * @param _finalinst Simulation duration
+	 */
 	public PEC(float _finalinst)
 	{
 		this.finalinst = _finalinst;
@@ -77,7 +86,7 @@ public class PEC {
 			return this.events.removeFirst();
 		}catch(NoSuchElementException e)
 		{
-			System.exit(-2);
+			System.exit(-5);
 			return null;
 		}
 	}

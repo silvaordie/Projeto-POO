@@ -1,13 +1,45 @@
 package graphs;
 import java.util.*;
 
+
 /** 
  *  Class for handling weighted graphs represented by numerical Nodes, each one with a list of linked Nodes.
  * @author José
  *
  */
 public class Graph{
+	/**
+	 * Graphs nodes
+	 */
 	private Node[] nodes;
+	
+	/**
+	 * Exception thrown when trying to access a non existing node
+	 * @author José
+	 *
+	 */
+	public class NoSuchNodeException extends Exception{		
+		/**
+		 * Default constructor 
+		 */
+	    public NoSuchNodeException(String x) 
+	    {
+	    	super(x);
+	    }
+	}
+	/**
+	 * Exception thrown when trying to create an already existing link 
+	 * @author José
+	 *
+	 */
+	public class ExistingLinkException extends Exception{
+
+		public ExistingLinkException(String x)
+		{
+			super(x);
+		}
+		
+	}
 	
 	/**
 	 * Default constructor, for graph initialization
@@ -24,13 +56,13 @@ public class Graph{
 	 * @param _2 Numerical identifier of the second node
 	 * @param _w Weight of the connection
 	 */
-	public void connect(int _1, int _2, float _w )
+	public void connect(int _1, int _2, float _w ) throws NoSuchNodeException, ExistingLinkException
 	{
-		if(_1>nodes.length || _2>nodes.length || _1<0 || _2<0)
-		{
-			System.out.println("Trying to connect unexisting nodes, terminating");
-			System.exit(1);
-		}
+		if(_1>nodes.length || _1<0 )
+			throw new NoSuchNodeException(Integer.toString(_1));
+		else if(_2>nodes.length || _2<0)
+			throw new NoSuchNodeException(Integer.toString(_2));
+		
 		Node no1;
 		Node no2;
 		
@@ -44,6 +76,21 @@ public class Graph{
 
 		no2 = nodes[_2-1];
 		
+		LinkedList<Link> adj1 = nodes[_1].getAdj();
+		LinkedList<Link> adj2 = nodes[_2].getAdj();
+		
+		for(int k=0; k<adj1.size(); k++)
+			for(int v=0; v<adj2.size(); v++)
+			{
+				Node one = adj1.get(k).getNode();
+				Node two =adj2.get(k).getNode();
+				
+				if( one.equals(nodes[_2]) || two.equals(nodes[_1]) )
+				{
+					throw new ExistingLinkException(Integer.toString(_1)+Integer.toString(_2));
+				}
+			}
+		
 		nodes[_1-1].newAdj(no2, _w);
 		nodes[_2-1].newAdj(no1, _w);			
 	}
@@ -53,8 +100,11 @@ public class Graph{
 	 * @param _id Node identifier (Node's number)
 	 * @return The node
 	 */
-	public Node getNode(int _id)
+	public Node getNode(int _id) throws NoSuchNodeException
 	{
+		if(_id > this.nodes.length )
+			throw new NoSuchNodeException(Integer.toString(_id));
+		
 		return nodes[_id-1];
 	}
 	

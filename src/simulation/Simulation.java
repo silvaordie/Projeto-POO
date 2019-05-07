@@ -7,19 +7,41 @@ import events.Event;
 import graphs.Link;
 import pec.*;
 
+/**
+ * Implements the simulation of the proposed problem
+ * @author José
+ *
+ */
 public class Simulation implements SimulationInterface{
 	
+	/**
+	 * Ant colony
+	 */
 	private AntInterface [] ants;
+	/**
+	 * Pending event container
+	 */
 	private PEC pec;
-	
+	/**
+	 * Simulation's final instant
+	 */
 	private float finalinst;
 
+	/**
+	 * Default constructor, receives the ant colony and the simulation's final instant
+	 * @param _ants Ant colony
+	 * @param _finalinst 
+	 */
 	Simulation(AntInterface[] _ants, float _finalinst)
 	{
 		this.ants = _ants;
 		this.finalinst = _finalinst;
 	}
 	
+	/**
+	 * Runs the simulation
+	 * @param delta Ant's mean time to traverse a link
+	 */
 	public void run(float delta)
 	{
 		float lasTime = 0;
@@ -51,6 +73,12 @@ public class Simulation implements SimulationInterface{
 		}
 	}
 	
+	/**
+	 * Prints the current simulation status and returns the current time
+	 * @param time Current time
+	 * @param obs Observations made
+	 * @return Current time elapsed
+	 */
 	public float printSim(float time, int obs)
 	{
 		int min_k=-1;

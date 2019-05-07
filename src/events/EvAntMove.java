@@ -11,10 +11,21 @@ import graphs.Link;
  *
  */
 public class EvAntMove extends SimulationEvent{
-	
+	/**
+	 * Ant moving
+	 */
 	private AntInterface ant;
+	/**
+	 * Hamiltonian cycle found
+	 */
 	private boolean cycle = false;
+	/**
+	 * Node the Ant will move to
+	 */
 	private Link next_node;
+	/**
+	 * Number of movement events occurred
+	 */
 	private static int mevents = 0;
 	
 	/**
@@ -29,7 +40,10 @@ public class EvAntMove extends SimulationEvent{
 		this.ant = _ant;
 		this.next_node = _next_node;
 	}
-	
+	/**
+	 * Returns the number o movement events simulated
+	 * @return Number of movement events ocurred
+	 */
 	public static int getCount()
 	{
 		return mevents;
@@ -75,8 +89,6 @@ public class EvAntMove extends SimulationEvent{
 	{
 		return cycle;
 	}
-	
-
 	
 	@Override
 	public int hashCode() {

@@ -1,68 +1,85 @@
-\noindent Present instant: 1.1510961\\
-Number of move events: 3\\
-Number of evaporation events: 0\\
 
-\noindent Present instant: 1.7733023\\
-Number of move events: 6\\
-Number of evaporation events: 0\\
-Hamiltonian cycle: {1,2,3,4,5}\\
+\noindent Observation 1:\\
+		\indent Present instant: 0.49181378\\
+		\indent Number of move events: 1\\
+		\indent Number of evaporation events: 0\\
 
-\noindent Present instant: 2.3528314\\
-Number of move events: 13\\
-Number of evaporation events: 0\\
-Hamiltonian cycle: {1,2,3,4,5}\\
+\noindent Observation 2:\\
+		\indent Present instant: 1.3702674\\
+		\indent Number of move events: 4\\
+		\indent Number of evaporation events: 0\\
 
-\noindent Present instant: 3.0121257\\
-Number of move events: 16\\
-Number of evaporation events: 0\\
-Hamiltonian cycle: {1,2,3,4,5}\\
+\noindent Observation 3:\\
+		\indent Present instant: 1.877971\\
+		\indent Number of move events: 6\\
+		\indent Number of evaporation events: 0\\
 
-\noindent Present instant: 3.595293\\
-Number of move events: 22\\
-Number of evaporation events: 0\\
-Hamiltonian cycle: {1,2,3,4,5}\\
+\noindent Observation 4:\\
+		\indent Present instant: 2.401289\\
+		\indent Number of move events: 10\\
+		\indent Number of evaporation events: 0\\
 
-\noindent Present instant: 4.5250564\\
-Number of move events: 25\\
-Number of evaporation events: 0\\
-Hamiltonian cycle: {1,2,3,4,5}\\
+\noindent Observation 5:\\
+		\indent Present instant: 3.114568\\
+		\indent Number of move events: 12\\
+		\indent Number of evaporation events: 0\\
 
-\noindent Present instant: 5.343624\\
-Number of move events: 26\\
-Number of evaporation events: 0\\
-Hamiltonian cycle: {1,2,3,4,5}\\
+\noindent Observation 6:\\
+		\indent Present instant: 3.611136\\
+		\indent Number of move events: 15\\
+		\indent Number of evaporation events: 0\\
 
-\noindent Present instant: 5.9619265\\
-Number of move events: 27\\
-Number of evaporation events: 0\\
-Hamiltonian cycle: {1,2,3,4,5}\\
+\noindent Observation 7:\\
+		\indent Present instant: 4.182597\\
+		\indent Number of move events: 19\\
+		\indent Number of evaporation events: 0\\
 
-\noindent Present instant: 6.4647326\\
-Number of move events: 31\\
-Number of evaporation events: 0\\
-Hamiltonian cycle: {1,2,3,4,5}\\
+\noindent Observation 8:\\
+		\indent Present instant: 4.8925037\\
+		\indent Number of move events: 21\\
+		\indent Number of evaporation events: 0\\
 
-\noindent Present instant: 7.048833\\
-Number of move events: 33\\
-Number of evaporation events: 1\\
-Hamiltonian cycle: {1,2,3,4,5}\\
+\noindent Observation 9:\\
+		\indent Present instant: 5.410108\\
+		\indent Number of move events: 23\\
+		\indent Number of evaporation events: 0\\
 
-\noindent Present instant: 7.5808396\\
-Number of move events: 36\\
-Number of evaporation events: 1\\
-Hamiltonian cycle: {1,2,3,4,5}\\
+\noindent Observation 10:\\
+		\indent Present instant: 6.048585\\
+		\indent Number of move events: 26\\
+		\indent Number of evaporation events: 0\\
 
-\noindent Present instant: 8.112687\\
-Number of move events: 38\\
-Number of evaporation events: 1\\
-Hamiltonian cycle: {1,2,3,4,5}\\
+\noindent Observation 11:\\
+		\indent Present instant: 6.710769\\
+		\indent Number of move events: 30\\
+		\indent Number of evaporation events: 0\\
 
-\noindent Present instant: 8.831924\\
-Number of move events: 44\\
-Number of evaporation events: 1\\
-Hamiltonian cycle: {1,2,3,4,5}\\
+\noindent Observation 12:\\
+		\indent Present instant: 7.2366943\\
+		\indent Number of move events: 34\\
+		\indent Number of evaporation events: 0\\
 
-\noindent Present instant: 9.565096\\
-Number of move events: 49\\
-Number of evaporation events: 2\\
-Hamiltonian cycle: {1,2,3,4,5}\\
+\noindent Observation 13:\\
+		\indent Present instant: 7.761806\\
+		\indent Number of move events: 37\\
+		\indent Number of evaporation events: 0\\
+
+\noindent Observation 14:\\
+		\indent Present instant: 8.381776\\
+		\indent Number of move events: 40\\
+		\indent Number of evaporation events: 0\\
+
+\noindent Observation 15:\\
+		\indent Present instant: 9.09185\\
+		\indent Number of move events: 44\\
+		\indent Number of evaporation events: 0\\
+
+\noindent Observation 16:\\
+		\indent Present instant: 9.605167\\
+		\indent Number of move events: 46\\
+		\indent Number of evaporation events: 0\\
+
+\noindent Observation 17:\\
+		\indent Present instant: 10.23141\\
+		\indent Number of move events: 50\\
+		\indent Number of evaporation events: 0\\

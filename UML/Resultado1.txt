@@ -1,94 +1,119 @@
-Present instant: 15.807718
-Number of move events: 32
-Number of evaporation events: 8
-Hamiltonian cycle: {1,5,4,2,3}
 
-Present instant: 31.733704
-Number of move events: 69
-Number of evaporation events: 15
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 1:\\
+		\indent Present instant: 14.932317\\
+		\indent Number of move events: 19\\
+		\indent Number of evaporation events: 0\\
 
-Present instant: 46.80634
-Number of move events: 85
-Number of evaporation events: 25
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 2:\\
+		\indent Present instant: 29.743576\\
+		\indent Number of move events: 44\\
+		\indent Number of evaporation events: 7\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 61.97162
-Number of move events: 106
-Number of evaporation events: 36
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 3:\\
+		\indent Present instant: 44.128315\\
+		\indent Number of move events: 56\\
+		\indent Number of evaporation events: 16\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 77.32034
-Number of move events: 137
-Number of evaporation events: 44
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 4:\\
+		\indent Present instant: 58.454906\\
+		\indent Number of move events: 85\\
+		\indent Number of evaporation events: 23\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 94.057365
-Number of move events: 184
-Number of evaporation events: 50
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 5:\\
+		\indent Present instant: 72.88139\\
+		\indent Number of move events: 109\\
+		\indent Number of evaporation events: 34\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 109.18163
-Number of move events: 214
-Number of evaporation events: 57
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 6:\\
+		\indent Present instant: 87.65467\\
+		\indent Number of move events: 131\\
+		\indent Number of evaporation events: 37\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 125.287285
-Number of move events: 240
-Number of evaporation events: 70
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 7:\\
+		\indent Present instant: 103.149475\\
+		\indent Number of move events: 153\\
+		\indent Number of evaporation events: 47\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 141.02481
-Number of move events: 268
-Number of evaporation events: 77
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 8:\\
+		\indent Present instant: 117.452545\\
+		\indent Number of move events: 174\\
+		\indent Number of evaporation events: 55\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 156.04118
-Number of move events: 299
-Number of evaporation events: 88
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 9:\\
+		\indent Present instant: 131.74846\\
+		\indent Number of move events: 201\\
+		\indent Number of evaporation events: 59\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 171.29724
-Number of move events: 330
-Number of evaporation events: 96
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 10:\\
+		\indent Present instant: 146.1226\\
+		\indent Number of move events: 227\\
+		\indent Number of evaporation events: 67\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 186.37076
-Number of move events: 354
-Number of evaporation events: 108
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 11:\\
+		\indent Present instant: 160.63304\\
+		\indent Number of move events: 257\\
+		\indent Number of evaporation events: 77\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 202.41354
-Number of move events: 382
-Number of evaporation events: 119
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 12:\\
+		\indent Present instant: 175.11507\\
+		\indent Number of move events: 282\\
+		\indent Number of evaporation events: 91\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 217.5682
-Number of move events: 401
-Number of evaporation events: 135
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 13:\\
+		\indent Present instant: 189.40154\\
+		\indent Number of move events: 303\\
+		\indent Number of evaporation events: 101\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 233.08612
-Number of move events: 434
-Number of evaporation events: 147
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 14:\\
+		\indent Present instant: 204.01637\\
+		\indent Number of move events: 327\\
+		\indent Number of evaporation events: 111\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 248.32709
-Number of move events: 460
-Number of evaporation events: 150
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 15:\\
+		\indent Present instant: 219.09929\\
+		\indent Number of move events: 365\\
+		\indent Number of evaporation events: 114\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 263.54633
-Number of move events: 477
-Number of evaporation events: 158
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 16:\\
+		\indent Present instant: 234.82529\\
+		\indent Number of move events: 384\\
+		\indent Number of evaporation events: 125\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 278.88773
-Number of move events: 508
-Number of evaporation events: 169
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 17:\\
+		\indent Present instant: 249.69637\\
+		\indent Number of move events: 400\\
+		\indent Number of evaporation events: 131\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
 
-Present instant: 293.89725
-Number of move events: 529
-Number of evaporation events: 175
-Hamiltonian cycle: {1,5,4,2,3}
+\noindent Observation 18:\\
+		\indent Present instant: 264.73923\\
+		\indent Number of move events: 417\\
+		\indent Number of evaporation events: 140\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
+
+\noindent Observation 19:\\
+		\indent Present instant: 279.297\\
+		\indent Number of move events: 439\\
+		\indent Number of evaporation events: 145\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
+
+\noindent Observation 20:\\
+		\indent Present instant: 293.659\\
+		\indent Number of move events: 468\\
+		\indent Number of evaporation events: 151\\
+		\indent Hamiltonian cycle: $\{$1,5,4,2,3$\}$\\
