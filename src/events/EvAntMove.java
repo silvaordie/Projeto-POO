@@ -15,7 +15,6 @@ public class EvAntMove extends SimulationEvent{
 	private AntInterface ant;
 	private boolean cycle = false;
 	private Link next_node;
-	private static int mevents = 0;
 	
 	/**
 	 * Default constructor, receives the Event's end time, the Ant which is desired to move the link connecting to the Node the Ant should move to
@@ -45,17 +44,17 @@ public class EvAntMove extends SimulationEvent{
 		
 		if(cycle)
 		{
-			LinkedList<Link> cycle = this.ant.getCycle();
+			LinkedList<Link> loop = this.ant.getCycle();
 			Link link;
 			Link aux;
 			
-			for(int k=0; k<cycle.size(); k++)
+			for(int k=0; k<loop.size(); k++)
 			{
-				link = cycle.get(k);
+				link = loop.get(k);
 				if(k==0)
-					aux = cycle.get(cycle.size()-1);
+					aux = loop.get(loop.size()-1);
 				else
-					aux = cycle.get(k-1);
+					aux = loop.get(k-1);
 				
 				events.add( new EvPhEvaporation(this.getTime() + expRandom(eta), link, aux.getNode()) )	;		
 			}			
@@ -76,8 +75,6 @@ public class EvAntMove extends SimulationEvent{
 		return cycle;
 	}
 	
-
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -90,7 +87,6 @@ public class EvAntMove extends SimulationEvent{
 	public boolean equals(Object obj) {
 		return false;
 	}
-
 	/**
 	 * Returns the Event's Ant
 	 * @return Event's Ant

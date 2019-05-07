@@ -10,7 +10,7 @@ import java.util.*;
  *
  */
 public class PEC {
-	
+		
 	private LinkedList<Event> events = new LinkedList<Event>();
 	private float finalinst;
 	
@@ -25,45 +25,22 @@ public class PEC {
 	 */
 	public void addEvPEC(Event[] _events)
 	{
-		Event event;
-		Event aux;
 		for(int v=0; _events!=null && v<_events.length; v++)
 		{
 			boolean found = false;
-			event = _events[v];
-			if( (event != null) && (event.getTime() < (this.finalinst+10)) )
-			{
-				if(this.events.size() == 0)
-					this.events.add(event);
-				else
-				{
-					int k;
-					for(k=0;k<this.events.size() && !found; k++)
-					{
-						aux = events.get(k);
-						if(event.equals(aux))
-							found=true;
-					}
-
-					for(k=0; k<this.events.size() && !found; k++)
-					{
-						aux = events.get(k);
-
-						if(event.getTime() < aux.getTime())
-						{
-							if(k==0)
-								this.events.addFirst(event);
-							else
-								this.events.add(k,event);
-							
-							break;
-						}
-					}
-					if(k==this.events.size())
-						this.events.addLast(event);
-				}
-			}			
-		}		
+			for(int k=0; k<this.events.size(); k++)
+				if(events.get(k).equals(_events[v]) || _events[v].getTime()>this.finalinst)
+					found = true;
+			
+			if(!found)
+				this.events.add(_events[v]);
+		}
+		
+		Collections.sort(this.events, new Comparator<Event>(){
+			@Override
+			public int compare(Event event2, Event event1){
+				return Float.floatToIntBits(event2.getTime()-event1.getTime());
+			}});
 	}
 	
 	/**

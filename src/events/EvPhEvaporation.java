@@ -11,7 +11,7 @@ public class EvPhEvaporation extends SimulationEvent{
 	
 	private Link link;
 	private Node no;
-	private static int eevents = 0;
+
 	/**
 	 * Default constructor, receives the Event's end time, the Link that will evaporate pheromones, the starting Node of the given link and the pheromone evaporation value
 	 * @param _time Event's end time
@@ -26,13 +26,7 @@ public class EvPhEvaporation extends SimulationEvent{
 		this.link = _link;
 		this.no = _no;
 	}
-	
-	public void setMean(float _m)
-	{
-		eta = _m;		
-	}
 
-	
 	public static int getCount()
 	{
 		return eevents; 		
@@ -96,6 +90,4 @@ public class EvPhEvaporation extends SimulationEvent{
 			return false;
 
 	}
-	
-	
 }

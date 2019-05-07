@@ -140,7 +140,7 @@ public class Main extends DefaultHandler{
 	
 	public static void main(String args[])
 	{
-		if(args.length != 1){
+		if(args.length != 2){
 			System.exit(-5);
 		}
 		SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -162,7 +162,17 @@ public class Main extends DefaultHandler{
 		
 		SimulationInterface simulation = new Simulation( ants, finalinst);
 		
-		simulation.run(delta);
+		String a[]=new String[2];
+		a[0]=Float.toString(delta);
+		a[1]=args[1];
+		try {
+			simulation.run(a);
+		}
+		catch(NumberFormatException e)
+		{
+			System.exit(-5);
+		}
+		
 		
 		System.exit(0);
 	}									 

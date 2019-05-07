@@ -7,9 +7,11 @@ import java.util.*;
  * @author José
  *
  */
-public abstract class SimulationEvent implements Event{
+public abstract class SimulationEvent implements Event,Comparable<Event>{
 	
-	private float time;
+	protected float time;
+	protected static int mevents = 0;
+	protected static int eevents = 0;
 	static float rho;
 	static float eta;
 	static float alfa;
@@ -55,4 +57,12 @@ public abstract class SimulationEvent implements Event{
 		float next = random.nextFloat();
 		return (float)(-m*Math.log(1.0-next));
 	}	
+	@Override
+	public int compareTo(Event event)
+	{
+		if(this.time<event.getTime() )
+			return 1;
+		else 
+			return 0;
+	}
 }

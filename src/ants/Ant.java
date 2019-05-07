@@ -1,5 +1,6 @@
 package ants;
 import java.util.*;
+import java.lang.Comparable;
 
 import graphs.*;
 
@@ -8,7 +9,7 @@ import graphs.*;
  * @author José
  *
  */
-public class Ant implements AntInterface{
+public class Ant implements AntInterface, Comparable<AntInterface>{
 	
 	LinkedList<Link> cycle =  new LinkedList<Link>();
 	LinkedList<Link> shortest_cycle = new LinkedList<Link>(); 
@@ -254,6 +255,14 @@ public class Ant implements AntInterface{
 		return this.min_cycle;
 	}
 	
+	@Override
+	public int compareTo(AntInterface ant)
+	{
+		if(this.min_cycle < ant.getWeight())
+			return 1;
+		else
+			return 0;
+	}
 	@Override
 	public String toString() {
 		String str = new String("{" + this.start.getId());

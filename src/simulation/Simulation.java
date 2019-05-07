@@ -2,7 +2,7 @@ package simulation;
 
 import ants.AntInterface;
 import events.EvAntMove;
-import events.EvPhEvaporation;
+import events.EvPrint;
 import events.Event;
 import graphs.Link;
 import pec.*;
@@ -20,24 +20,28 @@ public class Simulation implements SimulationInterface{
 		this.finalinst = _finalinst;
 	}
 	
-	public void run(float delta)
-	{
-		float lasTime = 0;
-		int obs = 0;
-		
+	public void run(String args[])
+	{		
 		this.pec = new PEC(finalinst);
+
 		Event[] events = new Event[ants.length];
-		float currenTime = 0;
-		
 		for(int k=0; k< ants.length ; k++)
 		{
 			Link move = ants[k].getMove();
-			events[k]=new EvAntMove( EvAntMove.expRandom((move.getWeight())*delta) , ants[k], move);
+			events[k]=new EvAntMove( EvAntMove.expRandom((move.getWeight())*Float.parseFloat(args[0])) , ants[k], move);
 		}
 		this.pec.addEvPEC(events);
 		
-		Event currentEvent = this.pec.nextEvPEC();
 		
+		events = new Event[Integer.parseInt(args[1])+1];
+		float t=0;
+		for(int k=0; k<events.length; k++)
+			events[k] = new EvPrint( t+=finalinst/events.length , k+1, ants) ;
+		
+		this.pec.addEvPEC(events);
+		
+		Event currentEvent = this.pec.nextEvPEC();
+		float currenTime = 0;
 		while(currenTime < finalinst)
 		{
 			currenTime=currentEvent.getTime();
@@ -46,32 +50,7 @@ public class Simulation implements SimulationInterface{
 			
 			currentEvent = this.pec.nextEvPEC();
 			
-			if( (currenTime - lasTime) > finalinst/21)
-				lasTime = printSim(currenTime, ++obs);
 		}
-	}
-	
-	public float printSim(float time, int obs)
-	{
-		int min_k=-1;
-		float min_w=9999;
-		
-		for(int k=0; k<ants.length ; k++)
-		{
-			if(ants[k].getWeight() < min_w)
-			{
-				min_k=k;
-				min_w=ants[k].getWeight();
-			}
-		}
-		System.out.println("\n\\noindent Observation " + obs + ":\\\\");
-		System.out.println("		\\indent Present instant: " + time +"\\\\");
-		System.out.println("		\\indent Number of move events: " + EvAntMove.getCount() +"\\\\");
-		System.out.println("		\\indent Number of evaporation events: " + EvPhEvaporation.getCount() +"\\\\");
-		if(min_k!=-1)
-			System.out.println("		\\indent Hamiltonian cycle: " + ants[min_k].toString() +"\\\\");
-		
-		return time;
 	}
 	
 }
