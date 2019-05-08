@@ -60,7 +60,7 @@ public class Graph{
 	{
 		if(_1>nodes.length || _1<0 )
 			throw new NoSuchNodeException(Integer.toString(_1));
-		else if(_2>nodes.length || _2<0)
+		if(_2>nodes.length || _2<0)
 			throw new NoSuchNodeException(Integer.toString(_2));
 		
 		Node no1;
@@ -76,16 +76,16 @@ public class Graph{
 
 		no2 = nodes[_2-1];
 		
-		LinkedList<Link> adj1 = nodes[_1].getAdj();
-		LinkedList<Link> adj2 = nodes[_2].getAdj();
+		LinkedList<Link> adj1 = nodes[_1-1].getAdj();
+		LinkedList<Link> adj2 = nodes[_2-1].getAdj();
 		
 		for(int k=0; k<adj1.size(); k++)
 			for(int v=0; v<adj2.size(); v++)
 			{
 				Node one = adj1.get(k).getNode();
-				Node two =adj2.get(k).getNode();
+				Node two =adj2.get(v).getNode();
 				
-				if( one.equals(nodes[_2]) || two.equals(nodes[_1]) )
+				if( (one!=null && two !=null) && ( one.equals(nodes[_2-1]) || two.equals(nodes[_1-1]) ) )
 				{
 					throw new ExistingLinkException(Integer.toString(_1)+Integer.toString(_2));
 				}

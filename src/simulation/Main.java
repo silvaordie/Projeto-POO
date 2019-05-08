@@ -137,6 +137,9 @@ public class Main extends DefaultHandler{
 		read_string=new String(ch,start,length);
 	}
 	
+	public void error(SAXParseException e)throws SAXParseException{
+		System.exit(0);
+	}
 	
 	public void fatalError(SAXParseException e) throws SAXParseException{
 		System.exit(-4);
