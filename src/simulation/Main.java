@@ -24,6 +24,7 @@ import events.*;
  */
 public class Main extends DefaultHandler{
 
+	//Auxiliary variables
 	private static final String GRAPH = "graph";
 	private static final String NODE = "node";
 	private static final String WEIGHT = "weight";
@@ -47,7 +48,8 @@ public class Main extends DefaultHandler{
 	private static float delta;
 	private static float eta;
 	private static float rho;
-		
+	
+
 	static float parseTag(String tag, Attributes atts)
 	{	
 		float ret=0;
@@ -120,19 +122,24 @@ public class Main extends DefaultHandler{
 		if(tag.equals(WEIGHT))
 		{
 			int connection = 0;
+			
 			try{
 				connection = Integer.parseInt(read_string);
-			}catch (NumberFormatException | NullPointerException nfe)
-			{
-				System.exit(-1);
-			}
-			graph.connect(crr_node, connecting_node, connection);			
+			}catch (NumberFormatException | NullPointerException nfe){
+				System.exit(-1);	}
+			try{
+				graph.connect(crr_node, connecting_node, connection);	}
+			catch(Graph.NoSuchNodeException | Graph.ExistingLinkException e){
+				System.exit(-4);	}
 		}
 	}
 	public void characters(char[] ch, int start, int length){
 		read_string=new String(ch,start,length);
 	}
 	
+	public void error(SAXParseException e)throws SAXParseException{
+		System.exit(0);
+	}
 	
 	public void fatalError(SAXParseException e) throws SAXParseException{
 		System.exit(-4);
@@ -141,7 +148,7 @@ public class Main extends DefaultHandler{
 	public static void main(String args[])
 	{
 		if(args.length != 2){
-			System.exit(-5);
+			System.exit(-2);
 		}
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		factory.setValidating(true);
@@ -156,23 +163,24 @@ public class Main extends DefaultHandler{
 			System.exit(-3);   }
 		
 		SimulationEvent.setParams(alpha, beta, delta, rho, eta);
-		Ant.setParams( graph.getNode(nestNode), graph.getSize() , alpha, beta, plevel , graph.getWeight() );
+		try{
+			Ant.setParams( graph.getNode(nestNode),graph.getSize() , alpha, beta, plevel , graph.getWeight() );	 }	
+		catch(Graph.NoSuchNodeException e){
+			System.exit(-4);			}
+		
 		for(int k=0; k< ants.length ; k++)
-			ants[k]= new Ant();
+				ants[k]= new Ant();
+
 		
 		SimulationInterface simulation = new Simulation( ants, finalinst);
 		
-		String a[]=new String[2];
-		a[0]=Float.toString(delta);
-		a[1]=args[1];
+		String[] a = new String[2]; 
+		a[0] = Float.toString(delta);
+		a[1]= args[1];
 		try {
-			simulation.run(a);
-		}
-		catch(NumberFormatException e)
-		{
-			System.exit(-5);
-		}
-		
+		simulation.run(a); }
+		catch(NumberFormatException e){
+			System.exit(-2);	}
 		
 		System.exit(0);
 	}									 

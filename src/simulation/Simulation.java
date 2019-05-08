@@ -32,7 +32,6 @@ class Simulation implements SimulationInterface{
 		}
 		this.pec.addEvPEC(events);
 		
-		
 		events = new Event[Integer.parseInt(args[1])+1];
 		float t=0;
 		for(int k=0; k<events.length; k++)
