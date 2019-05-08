@@ -7,7 +7,7 @@ import events.Event;
 import graphs.Link;
 import pec.*;
 
-public class Simulation implements SimulationInterface{
+class Simulation implements SimulationInterface{
 	
 	private AntInterface [] ants;
 	private PEC pec;
@@ -36,7 +36,7 @@ public class Simulation implements SimulationInterface{
 		events = new Event[Integer.parseInt(args[1])+1];
 		float t=0;
 		for(int k=0; k<events.length; k++)
-			events[k] = new EvPrint( t+=finalinst/events.length , k+1, ants) ;
+			events[k] = new EvPrint( t+=finalinst/events.length , k+1) ;
 		
 		this.pec.addEvPEC(events);
 		

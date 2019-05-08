@@ -1,6 +1,5 @@
 package ants;
 import java.util.*;
-import java.lang.Comparable;
 
 import graphs.*;
 
@@ -9,39 +8,40 @@ import graphs.*;
  * @author José
  *
  */
-public class Ant implements AntInterface, Comparable<AntInterface>{
+public class Ant implements AntInterface{
 	
-	LinkedList<Link> cycle =  new LinkedList<Link>();
-	LinkedList<Link> shortest_cycle = new LinkedList<Link>(); 
-	private float min_cycle = 1999999999;
-	private Node start;
-	private static int n_nodes;
-	private static float graph_weight;
-	private static float alpha;
-	private static float beta;
-	private static float gamma;
+	private LinkedList<Link> cycle =  new LinkedList<Link>();
+	private static LinkedList<Link> shortest_cycle = new LinkedList<Link>(); 
+	
+	private static float min_cycle = 1999999999;
+	private static Node start;
+	private static  int n_nodes=0;
+	private static  float graph_weight=0;
+	private static  float alpha=0;
+	private static  float beta=0;
+	private static  float gamma=0;
 	
 	/**
-	 * Default constructor, sets the Ant's nest node, some simulation parameters, and some graph proprietes
+	 * Default constructor
+	 */
+	public Ant() {};
+	/**
+	 * Sets the colony's parameters
 	 * @param _ini Ant's nest Node
 	 * @param _n_nodes Number of Node sin the Graph
 	 * @param _alpha Parameter concerning the ant move event
 	 * @param _beta Parameter concerning the ant move event
 	 * @param _gamma Parameter concerning the ant move event
 	 * @param _graph_weight Graph's total weight
-	 */
-	public Ant(Node _ini)
-	{
-		this.start= _ini;
-	}
-	
-	public static void setParams( int _n_nodes, float _alpha, float _beta, float _gamma, float _graph_weight)
+	 */	
+	public static void setParams( Node _ini, int _n_nodes, float _alpha, float _beta, float _gamma, float _graph_weight)
 	{
 		n_nodes = _n_nodes;
 		alpha = _alpha;
 		beta= _beta;
 		gamma = _gamma;
 		graph_weight = _graph_weight;
+		start=_ini;
 	}
 	
 	/**
@@ -103,15 +103,15 @@ public class Ant implements AntInterface, Comparable<AntInterface>{
 			sum += link.getWeight();
 		}
 		
-		if(sum < this.min_cycle)
+		if(sum < min_cycle)
 		{
-			this.shortest_cycle.clear();
+			shortest_cycle.clear();
 			for(k=0; k<this.cycle.size(); k++)
-				this.shortest_cycle.add(this.cycle.get(k));
-			this.min_cycle = sum;
+				shortest_cycle.add(this.cycle.get(k));
+			min_cycle = sum;
 		}
 		float increment = gamma * (graph_weight/sum) ;
-		Node no = this.start;
+		Node no = start;
 		for (k=0; k<this.cycle.size() ;k++)
 		{
 			link = this.cycle.get(k);
@@ -137,7 +137,7 @@ public class Ant implements AntInterface, Comparable<AntInterface>{
 			a = temp.getNode();
 		}
 		else
-			a = this.start;
+			a = start;
 		
 		//Grabs the latest node's edges
 		LinkedList<Link> adj = a.getAdj();
@@ -154,7 +154,7 @@ public class Ant implements AntInterface, Comparable<AntInterface>{
 			a=temp.getNode();
 			found=false;
 			
-			if(a.equals(this.start))
+			if(a.equals(start))
 				found=true;
 			for(v=0; v < cycle.size() && !found ;v++)
 			{
@@ -194,7 +194,7 @@ public class Ant implements AntInterface, Comparable<AntInterface>{
 		boolean remove = false;
 		
 		//If the next node is the nest
-		if(no.equals(this.start))
+		if(no.equals(start))
 		{
 			this.cycle.add(link);
 			//Check if it is a hamiltonian cycle
@@ -238,40 +238,39 @@ public class Ant implements AntInterface, Comparable<AntInterface>{
 	 */
 	public LinkedList<Link> getCycle()
 	{
-		return this.shortest_cycle;
-	}
-	
-	public Node getFirst()
-	{
-		return this.start;
+		return shortest_cycle;
 	}
 	
 	/**
-	 * Returns the weigh of the shortes cycle found
-	 * @return
+	 * Returns the colony's 
+	 */
+	public Node getFirst()
+	{
+		return start;
+	}
+	
+	/**
+	 * Returns the weigh of the shortest cycle found
+	 * @return Shortest cycle found by the colony
 	 */
 	public float getWeight()
 	{
-		return this.min_cycle;
+		return min_cycle;
 	}
 	
-	@Override
-	public int compareTo(AntInterface ant)
-	{
-		if(this.min_cycle < ant.getWeight())
-			return 1;
-		else
-			return 0;
-	}
+	
+	/**
+	 * Prints the colony's shortest cycle found 
+	 */
 	@Override
 	public String toString() {
-		String str = new String("{" + this.start.getId());
+		String str = new String("{" + shortest_cycle.get(shortest_cycle.size()-1).getNode().getId());
 		Link link;
 		Node no;
 		
-		for(int k=0; k<this.shortest_cycle.size()-1;k++)
+		for(int k=0; k<shortest_cycle.size()-1;k++)
 		{
-			link=this.shortest_cycle.get(k);
+			link=shortest_cycle.get(k);
 			no=link.getNode();
 			
 			str=str + "," + Integer.toString(no.getId()) ;

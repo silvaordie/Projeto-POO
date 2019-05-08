@@ -156,9 +156,9 @@ public class Main extends DefaultHandler{
 			System.exit(-3);   }
 		
 		SimulationEvent.setParams(alpha, beta, delta, rho, eta);
-		Ant.setParams( graph.getSize() , alpha, beta, plevel , graph.getWeight() );
+		Ant.setParams( graph.getNode(nestNode), graph.getSize() , alpha, beta, plevel , graph.getWeight() );
 		for(int k=0; k< ants.length ; k++)
-			ants[k]= new Ant(graph.getNode(nestNode));
+			ants[k]= new Ant();
 		
 		SimulationInterface simulation = new Simulation( ants, finalinst);
 		

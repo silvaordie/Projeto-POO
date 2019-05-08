@@ -11,6 +11,4 @@ public interface AntInterface{
 	public abstract LinkedList<Link> getCycle();
 	public abstract Node getFirst();
 	public abstract float getWeight();
-	public abstract int compareTo(AntInterface obj);
-
 }

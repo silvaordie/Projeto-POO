@@ -7,23 +7,22 @@ public class EvPrint implements Event,Comparable<Event>{
 	
 	private float time=0;
 	private int obs=0;
-	private AntInterface[] ants;
 	
-	public EvPrint(float _t, int _ob, AntInterface[] _ants)
+	public EvPrint(float _t, int _ob)
 	{
 		this.time = _t;
 		this.obs = _ob;
-		this.ants = _ants;
 	}
 	
 	public Event[] simulate() 
 	{
+		AntInterface ant = new Ant();
 		System.out.println("\n\\noindent Observation " + this.obs + ":\\\\");
 		System.out.println("		\\indent Present instant: " + this.time +"\\\\");
 		System.out.println("		\\indent Number of move events: " + EvAntMove.getCount() +"\\\\");
 		System.out.println("		\\indent Number of evaporation events: " + EvPhEvaporation.getCount() +"\\\\");
-		if(ants[0].getWeight()<999999999)
-			System.out.println("		\\indent Hamiltonian cycle: " + ants[0].toString() +"\\\\");
+		if(ant.getWeight()<999999999)
+			System.out.println("		\\indent Hamiltonian cycle: " + ant.toString() +"\\\\");
 		
 		return null;	
 	}

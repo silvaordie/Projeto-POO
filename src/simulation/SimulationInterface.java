@@ -1,5 +1,5 @@
 package simulation;
 
-public interface SimulationInterface {
+interface SimulationInterface {
 	public abstract void run(String args[]);
 }
