@@ -18,59 +18,39 @@
         </node>
         <node nodeidx="3">
             <weight targetnode="4">1</weight>
-            <weight targetnode="1">2</weight>
             <weight targetnode="5">2</weight>
             <weight targetnode="7">2</weight>
             <weight targetnode="9">2</weight>
         </node>
         <node nodeidx="4">
             <weight targetnode="5">1</weight>
-            <weight targetnode="2">3</weight>
             <weight targetnode="6">3</weight>
             <weight targetnode="8">3</weight>
             <weight targetnode="10">3</weight>
         </node>
         <node nodeidx="5">
             <weight targetnode="6">1</weight>
-            <weight targetnode="3">2</weight>
-            <weight targetnode="1">2</weight>
             <weight targetnode="7">2</weight>
             <weight targetnode="9">2</weight>
         </node>
         <node nodeidx="6">
         	<weight targetnode="7">1</weight>
-            <weight targetnode="4">3</weight>
-            <weight targetnode="2">3</weight>
             <weight targetnode="8">3</weight>
             <weight targetnode="10">3</weight>
         </node>
         <node nodeidx="7">
             <weight targetnode="8">1</weight>
-            <weight targetnode="3">2</weight>
-            <weight targetnode="5">2</weight>
-            <weight targetnode="1">2</weight>
             <weight targetnode="9">2</weight>
         </node>
         <node nodeidx="8">
         	<weight targetnode="9">1</weight>
-            <weight targetnode="4">3</weight>
-            <weight targetnode="6">3</weight>
-            <weight targetnode="2">3</weight>
             <weight targetnode="10">3</weight>
         </node>
         <node nodeidx="9">
             <weight targetnode="10">1</weight>
-            <weight targetnode="3">2</weight>
-            <weight targetnode="5">2</weight>
-            <weight targetnode="7">2</weight>
-            <weight targetnode="1">2</weight>
         </node>
         <node nodeidx="10">
         	<weight targetnode="1">1</weight>
-            <weight targetnode="4">3</weight>
-            <weight targetnode="6">3</weight>
-            <weight targetnode="8">3</weight>
-            <weight targetnode="2">3</weight>
         </node>
     </graph>
     <events>

@@ -29,6 +29,10 @@ public class EvAntMove extends SimulationEvent{
 		this.next_node = _next_node;
 	}
 	
+	/**
+	 * Returns the number of Movement Events simulated
+	 * @return Number of Movement event simulations
+	 */
 	public static int getCount()
 	{
 		return mevents;
@@ -39,9 +43,11 @@ public class EvAntMove extends SimulationEvent{
 	public SimulationEvent[] simulate()
 	{
 		mevents++;
+		//move's the ant
 		cycle = this.ant.moveAnt(next_node);
-		LinkedList<SimulationEvent> events = new LinkedList<SimulationEvent>();
 		
+		LinkedList<SimulationEvent> events = new LinkedList<SimulationEvent>();
+		//If a cycle was found, adds Evaporation Events to the edges of the cycle
 		if(cycle)
 		{
 			LinkedList<Link> loop = this.ant.getCycle();
@@ -59,7 +65,7 @@ public class EvAntMove extends SimulationEvent{
 				events.add( new EvPhEvaporation(this.getTime() + expRandom(eta), link, aux.getNode()) )	;		
 			}			
 		}
-
+		//Adds the another Ant move to the events to simulate
 		Link move = this.ant.getMove();
 		events.add( new EvAntMove(this.getTime() + expRandom(delta * move.getWeight()), this.ant, move ) );
 	
@@ -83,6 +89,9 @@ public class EvAntMove extends SimulationEvent{
 		return result;
 	}
 
+	/**
+	 * Checks if the event is equal to another one (Always false for EvAntMove)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		return false;

@@ -162,7 +162,7 @@ public class Main extends DefaultHandler{
 		} catch(IOException e){
 			System.exit(-3);   }
 		
-		SimulationEvent.setParams(alpha, beta, delta, rho, eta);
+ 
 		try{
 			Ant.setParams( graph.getNode(nestNode),graph.getSize() , alpha, beta, plevel , graph.getWeight() );	 }	
 		catch(Graph.NoSuchNodeException e){
@@ -170,8 +170,8 @@ public class Main extends DefaultHandler{
 		
 		for(int k=0; k< ants.length ; k++)
 				ants[k]= new Ant();
-
 		
+		SimulationEvent.setParams(alpha, beta, delta, rho, eta);
 		SimulationInterface simulation = new Simulation( ants, finalinst);
 		
 		String[] a = new String[2]; 

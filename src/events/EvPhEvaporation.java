@@ -17,7 +17,6 @@ public class EvPhEvaporation extends SimulationEvent{
 	 * @param _time Event's end time
 	 * @param _link Link that will evaporate it's pheromones
 	 * @param _no Link's starting Node
-	 * @param _ro Pheromone level decrease value
 	 */
 	public EvPhEvaporation(float _time, Link _link, Node _no)
 	{
@@ -26,7 +25,11 @@ public class EvPhEvaporation extends SimulationEvent{
 		this.link = _link;
 		this.no = _no;
 	}
-
+	
+	/**
+	 * Returns the number of simulations of evaporation events
+	 * @return Number of simulations of evaporation events
+	 */
 	public static int getCount()
 	{
 		return eevents; 		
@@ -41,6 +44,7 @@ public class EvPhEvaporation extends SimulationEvent{
 		SimulationEvent[] events = new SimulationEvent[1];
 		this.link.evaporatePh(rho, this.no);
 		
+		//If there are still pheromones in the edge, adds another Evaporation event to the events to simulate
 		if(this.link.getPh()>0) 
 		{
 			events[0] = new EvPhEvaporation( this.getTime() + expRandom(eta), this.link, this.no);
@@ -52,7 +56,7 @@ public class EvPhEvaporation extends SimulationEvent{
 
 	/**
 	 * Returns the Event Link's starting Node
-	 * @return
+	 * @return Event Link's starting node
 	 */
 	public Node getNode()
 	{
@@ -61,7 +65,7 @@ public class EvPhEvaporation extends SimulationEvent{
 	
 	/**
 	 * Returns the Event's Link
-	 * @return
+	 * @return Event's link
 	 */
 	public Link getLink()
 	{
@@ -75,7 +79,9 @@ public class EvPhEvaporation extends SimulationEvent{
 		result = prime * result + ((link == null) ? 0 : link.hashCode());
 		return result;
 	}
-
+	/**
+	 * Checks if the event is equal to another one
+	 */
 	@Override
 	public boolean equals(Object obj) {
 

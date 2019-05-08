@@ -9,12 +9,25 @@ import graphs.*;
  *
  */
 public class Ant implements AntInterface{
-	
+	/**
+	 * (Ant related) Current ant cycle
+	 */
 	private LinkedList<Link> cycle =  new LinkedList<Link>();
+	/**
+	 * (Colony related) Colony's current shortest cycle found
+	 */
 	private static LinkedList<Link> shortest_cycle = new LinkedList<Link>(); 
-	
+	/**
+	 * (Colony related) Weight of shortest cycle found
+	 */
 	private static float min_cycle = 1999999999;
+	/**
+	 * (Colony Related) Nest node
+	 */
 	private static Node start;
+	/**
+	 * Simulation related parameters
+	 */
 	private static  int n_nodes=0;
 	private static  float graph_weight=0;
 	private static  float alpha=0;
@@ -25,6 +38,7 @@ public class Ant implements AntInterface{
 	 * Default constructor
 	 */
 	public Ant() {};
+	
 	/**
 	 * Sets the colony's parameters
 	 * @param _ini Ant's nest Node
@@ -45,7 +59,7 @@ public class Ant implements AntInterface{
 	}
 	
 	/**
-	 * Based on the possible Nodes the Ant can move to, returns a random index based on the connecting Links weights and pheromone levels
+	 * Returns a random index based on the connecting Links weights and pheromone levels which indicates the Node the ant should tranverse to
 	 * @param val List of Links that connect the current Node to the available Nodes
 	 * @return Random index of the input List
 	 */
@@ -89,7 +103,7 @@ public class Ant implements AntInterface{
 	}
 	
 	/**
-	 * Checks if the current Hamiltonian cycle found is shorter than the one previously found, if so saves the current cycle and weight. Also laysdown pheromones on the cycle's nodes
+	 * Checks if the current Hamiltonian cycle found is shorter than the one previously found, if so saves the current cycle and weight. Also lays down pheromones on the cycle's nodes
 	 */
 	private void checkSize()
 	{
@@ -122,7 +136,7 @@ public class Ant implements AntInterface{
 	
 	/**
 	 * Returns the Link that the Ant should traverse to
-	 * @return
+	 * @return The edge that connects the current node to the next
 	 */
 	public Link getMove()
 	{
@@ -234,7 +248,7 @@ public class Ant implements AntInterface{
 	
 	/**
 	 * Returns the Ant's shortest cycle found
-	 * @return
+	 * @return The colony's shortest cycle found
 	 */
 	public LinkedList<Link> getCycle()
 	{
@@ -242,7 +256,8 @@ public class Ant implements AntInterface{
 	}
 	
 	/**
-	 * Returns the colony's 
+	 * Returns the colony's nest node 
+	 * @return Nest Node
 	 */
 	public Node getFirst()
 	{

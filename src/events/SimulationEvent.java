@@ -30,6 +30,14 @@ public abstract class SimulationEvent implements Event,Comparable<Event>{
 	 */
 	public abstract SimulationEvent[] simulate();
 	
+	/**
+	 * Sets the simulations parameters
+	 * @param _alpha Alpha parameter
+	 * @param _beta Beta parameter
+	 * @param _delta Delta parameter
+	 * @param _rho Rho parameter
+	 * @param _eta Eta parameter
+	 */
 	public static void setParams(float _alpha, float _beta, float _delta, float _rho, float _eta)
 	{
 		alfa = _alpha;
@@ -40,16 +48,16 @@ public abstract class SimulationEvent implements Event,Comparable<Event>{
 	}
 	/**
 	 * Returns the Event's end time
-	 * @return
+	 * @return Event's final instant
 	 */
 	public float getTime()
 	{
 		return this.time;
 	}
 	/**
-	 * voltar a este ponto mais tarde
-	 * @param m Mean value
-	 * @return 
+	 * Returns a event's final time based on it's average duration
+	 * @param m Average event duration
+	 * @return Event duration
 	 */
 	public static float expRandom(float m)
 	{
@@ -57,6 +65,9 @@ public abstract class SimulationEvent implements Event,Comparable<Event>{
 		float next = random.nextFloat();
 		return (float)(-m*Math.log(1.0-next));
 	}	
+	/**
+	 * Compares two events
+	 */
 	@Override
 	public int compareTo(Event event)
 	{

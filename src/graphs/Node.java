@@ -8,7 +8,13 @@ import java.util.*;
  */
 public class Node{
 		
+		/**
+		 * Node's numeric value
+		 */
 		private int  id;
+		/**
+		 * List of the Node's links
+		 */
 		private LinkedList<Link> adj = new LinkedList<Link>();
 		
 		/**
@@ -45,6 +51,9 @@ public class Node{
 			return this.id;
 		}
 		
+		/**
+		 * Returns the Node's textual description
+		 */
 		@Override
 		public String toString() {
 			String str = new String("Node " + Integer.toString(this.id) +  ": {");
@@ -67,7 +76,9 @@ public class Node{
 			result = prime * result + id;
 			return result;
 		}
-
+		/**
+		 * Checks if two nodes are equal
+		 */
 		@Override
 		public boolean equals(Object obj) {
 
